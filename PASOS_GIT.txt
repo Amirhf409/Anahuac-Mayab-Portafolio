@@ -1,0 +1,57 @@
+========================================
+PASOS PARA SUBIR CAMBIOS A GITHUB (GIT)
+Proyecto: POO-Anahuac
+Rama: main
+========================================
+
+1) (Opcional pero recomendado)
+Ver qué archivos cambiaron:
+--------------------------------
+git status
+
+2) Agregar los cambios al área de preparación:
+--------------------------------
+Para agregar TODOS los archivos:
+git add .
+
+Para agregar un archivo específico:
+git add NombreArchivo.java
+
+3) Crear un commit (guardar el cambio):
+--------------------------------
+git commit -m "Descripción clara del cambio"
+
+Ejemplos:
+git commit -m "Agrega clase Factura"
+git commit -m "Corrige error en constructor"
+git commit -m "Actualiza método obtenerMontoFactura"
+
+4) Subir los cambios a GitHub:
+--------------------------------
+git push
+
+========================================
+REGLA DE ORO
+========================================
+- Si trabajas en otra computadora o GitHub cambió:
+  Ejecuta ANTES de trabajar:
+  git pull
+
+========================================
+NOTAS IMPORTANTES
+========================================
+- No subir archivos compilados (.class, bin/, out/)
+- El archivo .gitignore se encarga de eso
+- Hacer commits pequeños y frecuentes
+- Un commit = un cambio claro
+
+========================================
+COMANDOS ÚTILES
+========================================
+Ver historial:
+git log --oneline
+
+Ver rama actual:
+git branch
+
+========================================

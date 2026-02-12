@@ -1,0 +1,15 @@
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\obj\Debug\net10.0\Autor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\obj\Debug\net10.0\Autor.AssemblyInfoInputs.cache
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\obj\Debug\net10.0\Autor.AssemblyInfo.cs
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\obj\Debug\net10.0\Autor.csproj.CoreCompileInputs.cache
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\obj\Debug\net10.0\Autor.sourcelink.json
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\bin\Debug\net10.0\Autor.exe
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\bin\Debug\net10.0\Autor.deps.json
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\bin\Debug\net10.0\Autor.runtimeconfig.json
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\bin\Debug\net10.0\Autor.dll
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\bin\Debug\net10.0\Autor.pdb
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\obj\Debug\net10.0\Autor.dll
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\obj\Debug\net10.0\refint\Autor.dll
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\obj\Debug\net10.0\Autor.pdb
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\obj\Debug\net10.0\Autor.genruntimeconfig.cache
+C:\Users\Amirh\Desktop\POOMayab\C#\Autor\obj\Debug\net10.0\ref\Autor.dll

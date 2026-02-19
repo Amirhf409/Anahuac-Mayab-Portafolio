@@ -1,0 +1,15 @@
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\obj\Debug\net10.0\Termometro.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\obj\Debug\net10.0\Termometro.AssemblyInfoInputs.cache
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\obj\Debug\net10.0\Termometro.AssemblyInfo.cs
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\obj\Debug\net10.0\Termometro.csproj.CoreCompileInputs.cache
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\obj\Debug\net10.0\Termometro.sourcelink.json
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\bin\Debug\net10.0\Termometro.exe
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\bin\Debug\net10.0\Termometro.deps.json
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\bin\Debug\net10.0\Termometro.runtimeconfig.json
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\bin\Debug\net10.0\Termometro.dll
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\bin\Debug\net10.0\Termometro.pdb
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\obj\Debug\net10.0\Termometro.dll
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\obj\Debug\net10.0\refint\Termometro.dll
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\obj\Debug\net10.0\Termometro.pdb
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\obj\Debug\net10.0\Termometro.genruntimeconfig.cache
+C:\Users\Amirh\Desktop\POOMayab\P1A11Termometro\C#\Termometro\obj\Debug\net10.0\ref\Termometro.dll

@@ -1,0 +1,11 @@
+C#
+dotnet new console -n MiProyecto
+cd MiProyecto
+dotnet run
+
+Python
+python archivo.python
+
+C++
+g++ programa.cpp -o programa
+Ejecutar: .\programa

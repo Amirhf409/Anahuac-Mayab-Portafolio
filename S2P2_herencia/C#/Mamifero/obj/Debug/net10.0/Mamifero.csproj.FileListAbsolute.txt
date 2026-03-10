@@ -1,0 +1,15 @@
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\bin\Debug\net10.0\Mamifero.exe
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\bin\Debug\net10.0\Mamifero.deps.json
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\bin\Debug\net10.0\Mamifero.runtimeconfig.json
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\bin\Debug\net10.0\Mamifero.dll
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\bin\Debug\net10.0\Mamifero.pdb
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\obj\Debug\net10.0\Mamifero.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\obj\Debug\net10.0\Mamifero.AssemblyInfoInputs.cache
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\obj\Debug\net10.0\Mamifero.AssemblyInfo.cs
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\obj\Debug\net10.0\Mamifero.csproj.CoreCompileInputs.cache
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\obj\Debug\net10.0\Mamifero.sourcelink.json
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\obj\Debug\net10.0\Mamifero.dll
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\obj\Debug\net10.0\refint\Mamifero.dll
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\obj\Debug\net10.0\Mamifero.pdb
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\obj\Debug\net10.0\Mamifero.genruntimeconfig.cache
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Mamifero\obj\Debug\net10.0\ref\Mamifero.dll

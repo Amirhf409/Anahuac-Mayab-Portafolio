@@ -1,0 +1,15 @@
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\obj\Debug\net10.0\Personas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\obj\Debug\net10.0\Personas.AssemblyInfoInputs.cache
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\obj\Debug\net10.0\Personas.AssemblyInfo.cs
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\obj\Debug\net10.0\Personas.csproj.CoreCompileInputs.cache
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\obj\Debug\net10.0\Personas.sourcelink.json
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\bin\Debug\net10.0\Personas.exe
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\bin\Debug\net10.0\Personas.deps.json
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\bin\Debug\net10.0\Personas.runtimeconfig.json
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\bin\Debug\net10.0\Personas.dll
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\bin\Debug\net10.0\Personas.pdb
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\obj\Debug\net10.0\Personas.dll
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\obj\Debug\net10.0\refint\Personas.dll
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\obj\Debug\net10.0\Personas.pdb
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\obj\Debug\net10.0\Personas.genruntimeconfig.cache
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\C#\Personas\obj\Debug\net10.0\ref\Personas.dll

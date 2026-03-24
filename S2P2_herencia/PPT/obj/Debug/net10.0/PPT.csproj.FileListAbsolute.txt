@@ -1,0 +1,15 @@
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\bin\Debug\net10.0\PPT.exe
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\bin\Debug\net10.0\PPT.deps.json
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\bin\Debug\net10.0\PPT.runtimeconfig.json
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\bin\Debug\net10.0\PPT.dll
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\bin\Debug\net10.0\PPT.pdb
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\obj\Debug\net10.0\PPT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\obj\Debug\net10.0\PPT.AssemblyInfoInputs.cache
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\obj\Debug\net10.0\PPT.AssemblyInfo.cs
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\obj\Debug\net10.0\PPT.csproj.CoreCompileInputs.cache
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\obj\Debug\net10.0\PPT.sourcelink.json
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\obj\Debug\net10.0\PPT.dll
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\obj\Debug\net10.0\refint\PPT.dll
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\obj\Debug\net10.0\PPT.pdb
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\obj\Debug\net10.0\PPT.genruntimeconfig.cache
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\PPT\obj\Debug\net10.0\ref\PPT.dll

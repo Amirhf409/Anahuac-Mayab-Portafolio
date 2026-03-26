@@ -1,4 +1,4 @@
-package S2P2_herencia.Herencia.Java;
+package S2P2_herencia.Java;
 
 public class testMamifero {
     public static void main(String args[]) {

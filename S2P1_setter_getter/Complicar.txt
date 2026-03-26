@@ -9,5 +9,3 @@ python archivo.python
 C++
 g++ programa.cpp -o programa
 Ejecutar: .\programa
-
-g++ Animales.cpp testAnimales.cpp -I ../Encabezado -o Programa

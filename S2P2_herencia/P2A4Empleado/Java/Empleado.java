@@ -1,79 +1,69 @@
 // Fig. 10.4: Empleado.java
 // La superclase abstracta Empleado.
 
-public abstract class Empleado 
-{
+public abstract class Empleado {
    private String primerNombre;
    private String apellidoPaterno;
    private String numeroSeguroSocial;
 
    // constructor con tres argumentos
-   public Empleado( String nombre, String apellido, String nss )
-   {
+   public Empleado(String nombre, String apellido, String nss) {
       primerNombre = nombre;
       apellidoPaterno = apellido;
       numeroSeguroSocial = nss;
    } // fin del constructor de Empleado con tres argumentos
 
    // establece el primer nombre
-   public void establecerPrimerNombre( String nombre )
-   {
+   public void establecerPrimerNombre(String nombre) {
       primerNombre = nombre;
-   } // fin del método establecerPrimerNombre
+   } // fin del mï¿½todo establecerPrimerNombre
 
    // devuelve el primer nombre
-   public String obtenerPrimerNombre()
-   {
+   public String obtenerPrimerNombre() {
       return primerNombre;
-   } // fin del método obtenerPrimerNombre
+   } // fin del mï¿½todo obtenerPrimerNombre
 
    // establece el apellido paterno
-   public void establecerApellidoPaterno( String apellido )
-   {
+   public void establecerApellidoPaterno(String apellido) {
       apellidoPaterno = apellido;
-   } // fin del método establecerApellidoPaterno
+   } // fin del mï¿½todo establecerApellidoPaterno
 
    // devuelve el apellido paterno
-   public String obtenerApellidoPaterno()
-   {
+   public String obtenerApellidoPaterno() {
       return apellidoPaterno;
-   } // fin del método obtenerApellidoPaterno
+   } // fin del mï¿½todo obtenerApellidoPaterno
 
-   // establece el número de seguro social
-   public void establecerNumeroSeguroSocial( String nss )
-   {
+   // establece el nï¿½mero de seguro social
+   public void establecerNumeroSeguroSocial(String nss) {
       numeroSeguroSocial = nss; // debe validar
-   } // fin del método establecerNumeroSeguroSocial
+   } // fin del mï¿½todo establecerNumeroSeguroSocial
 
-   // devuelve el número de seguro social
-   public String obtenerNumeroSeguroSocial()
-   {
+   // devuelve el nï¿½mero de seguro social
+   public String obtenerNumeroSeguroSocial() {
       return numeroSeguroSocial;
-   } // fin del método obtenerNumeroSeguroSocial
+   } // fin del mï¿½todo obtenerNumeroSeguroSocial
 
-   // devuelve representación String de un objeto Empleado
-   public String toString()
-   {
-      return String.format( "%s %s\nnumero de seguro social: %s", 
-         obtenerPrimerNombre(), obtenerApellidoPaterno(), obtenerNumeroSeguroSocial() );
-   } // fin del método toString
+   // devuelve representaciï¿½n String de un objeto Empleado
+   public String toString() {
+      return String.format("%s %s\nnumero de seguro social: %s",
+            obtenerPrimerNombre(), obtenerApellidoPaterno(), obtenerNumeroSeguroSocial());
+   } // fin del mï¿½todo toString
 
-   // método abstracto sobrescrito por las subclases
-   public abstract double ingresos(); // aquí no hay implementación
-} // fin de la clase abstracta Empleado
-
+   // mï¿½todo abstracto sobrescrito por las subclases
+   public abstract double ingresos(); // aquï¿½ no hay implementaciï¿½n
+} // fin de la clase abstracta Empleado.
 
 /**************************************************************************
- * (C) Copyright 1992-2007 por Deitel & Associates, Inc. y                *
- * Pearson Education, Inc. Todos los derechos reservados.                 *
- *                                                                        *
+ * (C) Copyright 1992-2007 por Deitel & Associates, Inc. y *
+ * Pearson Education, Inc. Todos los derechos reservados. *
+ * *
  * RENUNCIA: Los autores y el editor de este libro han realizado su mejor *
- * esfuerzo para preparar este libro. Esto incluye el desarrollo, la      *
- * investigación y prueba de las teorías y programas para determinar su   *
- * efectividad. Los autores y el editor no hacen ninguna garantía de      *
- * ningún tipo, expresa o implícita, en relación con estos programas o    *
- * con la documentación contenida en estos libros. Los autores y el       *
- * editor no serán responsables en ningún caso por los daños consecuentes *
- * en conexión con, o que surjan de, el suministro, desempeño o uso de    *
- * estos programas.                                                       *
+ * esfuerzo para preparar este libro. Esto incluye el desarrollo, la *
+ * investigaciï¿½n y prueba de las teorï¿½as y programas para determinar su *
+ * efectividad. Los autores y el editor no hacen ninguna garantï¿½a de *
+ * ningï¿½n tipo, expresa o implï¿½cita, en relaciï¿½n con estos programas o *
+ * con la documentaciï¿½n contenida en estos libros. Los autores y el *
+ * editor no serï¿½n responsables en ningï¿½n caso por los daï¿½os consecuentes *
+ * en conexiï¿½n con, o que surjan de, el suministro, desempeï¿½o o uso de *
+ * estos programas. *
  *************************************************************************/

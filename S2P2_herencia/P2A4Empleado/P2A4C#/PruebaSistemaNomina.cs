@@ -1,5 +1,9 @@
-﻿public class PruebaSistemaNomina {
-   public static void main(String args[]) {
+﻿using System;
+
+public class PruebaSistemaNomina
+{
+   public static void Main(string[] args)
+   {
       // crear objetos de cada tipo de empleado
       EmpleadoAsalariado empleadoAsalariado = new EmpleadoAsalariado("John", "Smith", "111-11-1111", 800.00);
 
@@ -13,25 +17,16 @@
       // NUEVO empleado
       TrabajadorPiezas trabajadorPiezas = new TrabajadorPiezas("Luis", "Gomez", "555-55-5555", 5.0, 200);
 
-      System.out.println("Empleados procesados por separado:\n");
+      Console.WriteLine("Empleados procesados por separado:\n");
 
-      System.out.printf("%s\n%s: $%,.2f\n\n",
-            empleadoAsalariado, "ingresos", empleadoAsalariado.ingresos());
-
-      System.out.printf("%s\n%s: $%,.2f\n\n",
-            empleadoPorHoras, "ingresos", empleadoPorHoras.ingresos());
-
-      System.out.printf("%s\n%s: $%,.2f\n\n",
-            empleadoPorComision, "ingresos", empleadoPorComision.ingresos());
-
-      System.out.printf("%s\n%s: $%,.2f\n\n",
-            empleadoBaseMasComision, "ingresos", empleadoBaseMasComision.ingresos());
-
-      System.out.printf("%s\n%s: $%,.2f\n\n",
-            trabajadorPiezas, "ingresos", trabajadorPiezas.ingresos());
+      Console.WriteLine($"{empleadoAsalariado}\ningresos: {empleadoAsalariado.Ingresos():C2}\n");
+      Console.WriteLine($"{empleadoPorHoras}\ningresos: {empleadoPorHoras.Ingresos():C2}\n");
+      Console.WriteLine($"{empleadoPorComision}\ningresos: {empleadoPorComision.Ingresos():C2}\n");
+      Console.WriteLine($"{empleadoBaseMasComision}\ningresos: {empleadoBaseMasComision.Ingresos():C2}\n");
+      Console.WriteLine($"{trabajadorPiezas}\ningresos: {trabajadorPiezas.Ingresos():C2}\n");
 
       // arreglo con TODOS los empleados
-      Empleado empleados[] = new Empleado[5];
+      Empleado[] empleados = new Empleado[5];
 
       empleados[0] = empleadoAsalariado;
       empleados[1] = empleadoPorHoras;
@@ -39,31 +34,30 @@
       empleados[3] = empleadoBaseMasComision;
       empleados[4] = trabajadorPiezas;
 
-      System.out.println("Empleados procesados en forma polimorfica:\n");
+      Console.WriteLine("Empleados procesados en forma polimorfica:\n");
 
-      for (Empleado empleadoActual : empleados) {
-         System.out.println(empleadoActual);
+      foreach (Empleado empleadoActual in empleados)
+      {
+         Console.WriteLine(empleadoActual);
 
          // aumento solo para base + comisión
-         if (empleadoActual instanceof EmpleadoBaseMasComision) {
-            EmpleadoBaseMasComision empleado = (EmpleadoBaseMasComision) empleadoActual;
+         if (empleadoActual is EmpleadoBaseMasComision)
+         {
+            EmpleadoBaseMasComision empleado = (EmpleadoBaseMasComision)empleadoActual;
 
             double salarioBaseAnterior = empleado.obtenerSalarioBase();
             empleado.establecerSalarioBase(1.10 * salarioBaseAnterior);
 
-            System.out.printf(
-                  "Nuevo salario base con 10%% de aumento: $%,.2f\n",
-                  empleado.obtenerSalarioBase());
+            Console.WriteLine($"Nuevo salario base con 10% de aumento: {empleado.obtenerSalarioBase():C2}");
          }
 
-         System.out.printf("ingresos: $%,.2f\n\n",
-               empleadoActual.ingresos());
+         Console.WriteLine($"ingresos: {empleadoActual.Ingresos():C2}\n");
       }
 
       // mostrar tipo de cada objeto
-      for (int j = 0; j < empleados.length; j++) {
-         System.out.printf("El empleado %d es un %s\n",
-               j, empleados[j].getClass().getName());
+      for (int j = 0; j < empleados.Length; j++)
+      {
+         Console.WriteLine($"El empleado {j} es un {empleados[j].GetType().Name}");
       }
    }
 }

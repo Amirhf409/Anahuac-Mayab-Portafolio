@@ -1,14 +1,15 @@
 // Nueva clase: TrabajadorPiezas
 // Representa a un empleado que cobra por pieza producida
 
-public class TrabajadorPiezas extends Empleado {
+public class TrabajadorPiezas : Empleado {
     private double salarioPorPieza; // pago por cada pieza
     private int piezas; // número de piezas producidas
 
     // constructor
-    public TrabajadorPiezas(String nombre, String apellido, String nss,
-            double salarioPorPieza, int piezas) {
-        super(nombre, apellido, nss);
+    public TrabajadorPiezas(string nombre, string apellido, string nss,
+            double salarioPorPieza, int piezas)
+        : base(nombre, apellido, nss)
+    {
         establecerSalarioPorPieza(salarioPorPieza);
         establecerPiezas(piezas);
     }
@@ -34,17 +35,15 @@ public class TrabajadorPiezas extends Empleado {
     }
 
     // implementar método abstracto ingresos
-    @Override
-    public double ingresos() {
+    public override double Ingresos() {
         return salarioPorPieza * piezas;
     }
 
     // toString
-    @Override
-    public String toString() {
-        return String.format(
-                "trabajador por piezas: %s\n%s: $%,.2f; %s: %d",
-                super.toString(),
+    public override string ToString() {
+        return string.Format(
+                "trabajador por piezas: {0}\n{1}: {2:C2}; {3}: {4}",
+                base.ToString(),
                 "salario por pieza", obtenerSalarioPorPieza(),
                 "piezas producidas", obtenerPiezas());
     }

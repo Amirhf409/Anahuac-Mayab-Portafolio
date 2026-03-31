@@ -1,73 +1,55 @@
 // Fig. 10.7: EmpleadoPorComision.java
 // La clase EmpleadoPorComision extiende a Empleado.
 
-public class EmpleadoPorComision extends Empleado 
+public class EmpleadoPorComision : Empleado 
 {
    private double ventasBrutas; // ventas totales por semana
-   private double tarifaComision; // porcentaje de comisión
+   private double tarifaComision; // porcentaje de comisiÃ³n
 
    // constructor con cinco argumentos
-   public EmpleadoPorComision( String nombre, String apellido, String nss, 
-      double ventas, double tarifa )
+   public EmpleadoPorComision( string nombre, string apellido, string nss, 
+      double ventas, double tarifa ) : base( nombre, apellido, nss )
    {
-      super( nombre, apellido, nss );
       establecerVentasBrutas( ventas );
       establecerTarifaComision( tarifa );
    } // fin del constructor de EmpleadoPorComision con cinco argumentos
 
-   // establece la tarifa de comisión
+   // establece la tarifa de comisiÃ³n
    public void establecerTarifaComision( double tarifa )
    {
       tarifaComision = ( tarifa > 0.0 && tarifa < 1.0 ) ? tarifa : 0.0;
-   } // fin del método establecerTarifaComision
+   } // fin del mÃ©todo establecerTarifaComision
 
-   // devuelve la tarifa de comisión
+   // devuelve la tarifa de comisiÃ³n
    public double obtenerTarifaComision()
    {
       return tarifaComision;
-   } // fin del método obtenerTarifaComision
+   } // fin del mÃ©todo obtenerTarifaComision
 
    // establece el monto de ventas brutas
    public void establecerVentasBrutas( double ventas )
    {
       ventasBrutas = ( ventas < 0.0 ) ? 0.0 : ventas;
-   } // fin del método establecerVentasBrutas
+   } // fin del mÃ©todo establecerVentasBrutas
 
    // devuelve el monto de ventas brutas
    public double obtenerVentasBrutas()
    {
       return ventasBrutas;
-   } // fin del método obtenerVentasBrutas
+   } // fin del mÃ©todo obtenerVentasBrutas
 
-   // calcula los ingresos; sobrescribe el método abstracto ingresos en Empleado
-   public double ingresos()
+   // calcula los ingresos; sobrescribe el mÃ©todo abstracto ingresos en Empleado
+   public override double Ingresos()
    {
       return obtenerTarifaComision() * obtenerVentasBrutas();
-   } // fin del método ingresos
+   } // fin del mÃ©todo ingresos
 
-   // devuelve representación String de un objeto EmpleadoPorComision
-   public String toString()
+   // devuelve representaciÃ³n String de un objeto EmpleadoPorComision
+   public override string ToString()
    {
-      return String.format( "%s: %s\n%s: $%,.2f; %s: %.2f", 
-         "empleado por comision", super.toString(), 
+      return string.Format( "{0}: {1}\n{2}: {3:C2}; {4}: {5:F2}", 
+         "empleado por comision", base.ToString(), 
          "ventas brutas", obtenerVentasBrutas(), 
          "tarifa de comision", obtenerTarifaComision() );
-   } // fin del método toString
+   } // fin del mÃ©todo toString
 } // fin de la clase EmpleadoPorComision
-
-
-/**************************************************************************
- * (C) Copyright 1992-2007 por Deitel & Associates, Inc. y                *
- * Pearson Education, Inc. Todos los derechos reservados.                 *
- *                                                                        *
- * RENUNCIA: Los autores y el editor de este libro han realizado su mejor *
- * esfuerzo para preparar este libro. Esto incluye el desarrollo, la      *
- * investigación y prueba de las teorías y programas para determinar su   *
- * efectividad. Los autores y el editor no hacen ninguna garantía de      *
- * ningún tipo, expresa o implícita, en relación con estos programas o    *
- * con la documentación contenida en estos libros. Los autores y el       *
- * editor no serán responsables en ningún caso por los daños consecuentes *
- * en conexión con, o que surjan de, el suministro, desempeño o uso de    *
- * estos programas.                                                       *
- *************************************************************************/
-

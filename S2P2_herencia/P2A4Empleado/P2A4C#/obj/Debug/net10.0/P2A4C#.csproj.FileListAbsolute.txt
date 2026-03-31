@@ -1,0 +1,15 @@
+C:\Users\Amirh\Desktop\POOMayab\S2P2_Herencia\P2A4Empleado\P2A4C#\obj\Debug\net10.0\P2A4C#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Amirh\Desktop\POOMayab\S2P2_Herencia\P2A4Empleado\P2A4C#\obj\Debug\net10.0\P2A4C#.AssemblyInfoInputs.cache
+C:\Users\Amirh\Desktop\POOMayab\S2P2_Herencia\P2A4Empleado\P2A4C#\obj\Debug\net10.0\P2A4C#.AssemblyInfo.cs
+C:\Users\Amirh\Desktop\POOMayab\S2P2_Herencia\P2A4Empleado\P2A4C#\obj\Debug\net10.0\P2A4C#.csproj.CoreCompileInputs.cache
+C:\Users\Amirh\Desktop\POOMayab\S2P2_Herencia\P2A4Empleado\P2A4C#\obj\Debug\net10.0\P2A4C#.sourcelink.json
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\P2A4Empleado\P2A4C#\bin\Debug\net10.0\P2A4C#.exe
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\P2A4Empleado\P2A4C#\bin\Debug\net10.0\P2A4C#.deps.json
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\P2A4Empleado\P2A4C#\bin\Debug\net10.0\P2A4C#.runtimeconfig.json
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\P2A4Empleado\P2A4C#\bin\Debug\net10.0\P2A4C#.dll
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\P2A4Empleado\P2A4C#\bin\Debug\net10.0\P2A4C#.pdb
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\P2A4Empleado\P2A4C#\obj\Debug\net10.0\P2A4C#.dll
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\P2A4Empleado\P2A4C#\obj\Debug\net10.0\refint\P2A4C#.dll
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\P2A4Empleado\P2A4C#\obj\Debug\net10.0\P2A4C#.pdb
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\P2A4Empleado\P2A4C#\obj\Debug\net10.0\P2A4C#.genruntimeconfig.cache
+C:\Users\Amirh\Desktop\POOMayab\S2P2_herencia\P2A4Empleado\P2A4C#\obj\Debug\net10.0\ref\P2A4C#.dll

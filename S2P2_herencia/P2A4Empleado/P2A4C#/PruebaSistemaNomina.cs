@@ -1,4 +1,4 @@
-public class PruebaSistemaNomina {
+﻿public class PruebaSistemaNomina {
    public static void main(String args[]) {
       // crear objetos de cada tipo de empleado
       EmpleadoAsalariado empleadoAsalariado = new EmpleadoAsalariado("John", "Smith", "111-11-1111", 800.00);

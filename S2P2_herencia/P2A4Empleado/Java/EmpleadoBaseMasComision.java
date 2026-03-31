@@ -17,29 +17,28 @@ public class EmpleadoBaseMasComision extends EmpleadoPorComision
    public void establecerSalarioBase( double salario )
    {
       salarioBase = ( salario < 0.0 ) ? 0.0 : salario; // positivo
-   } // fin del método establecerSalarioBase
+   } // fin del mï¿½todo establecerSalarioBase
 
    // devuelve el salario base
    public double obtenerSalarioBase()
    {
       return salarioBase;
-   } // fin del método obtenerSalarioBase
+   } // fin del mï¿½todo obtenerSalarioBase
 
-   // calcula los ingresos; sobrescribe el método ingresos en EmpleadoPorComision
+   // calcula los ingresos; sobrescribe el mï¿½todo ingresos en EmpleadoPorComision
    public double ingresos()
    {
       return obtenerSalarioBase() + super.ingresos();
-   } // fin del método ingresos
+   } // fin del mï¿½todo ingresos
 
-   // devuelve representación String de un objeto EmpleadoBaseMasComision
+   // devuelve representaciï¿½n String de un objeto EmpleadoBaseMasComision
    public String toString()
    {
       return String.format( "%s %s; %s: $%,.2f", 
          "con salario base", super.toString(), 
          "salario base", obtenerSalarioBase() );
-   } // fin del método toString   
+   } // fin del mï¿½todo toString   
 } // fin de la clase EmpleadoBaseMasComision
-
 
 /**************************************************************************
  * (C) Copyright 1992-2007 por Deitel & Associates, Inc. y                *
@@ -47,12 +46,12 @@ public class EmpleadoBaseMasComision extends EmpleadoPorComision
  *                                                                        *
  * RENUNCIA: Los autores y el editor de este libro han realizado su mejor *
  * esfuerzo para preparar este libro. Esto incluye el desarrollo, la      *
- * investigación y prueba de las teorías y programas para determinar su   *
- * efectividad. Los autores y el editor no hacen ninguna garantía de      *
- * ningún tipo, expresa o implícita, en relación con estos programas o    *
- * con la documentación contenida en estos libros. Los autores y el       *
- * editor no serán responsables en ningún caso por los daños consecuentes *
- * en conexión con, o que surjan de, el suministro, desempeño o uso de    *
+ * investigaciï¿½n y prueba de las teorï¿½as y programas para determinar su   *
+ * efectividad. Los autores y el editor no hacen ninguna garantï¿½a de      *
+ * ningï¿½n tipo, expresa o implï¿½cita, en relaciï¿½n con estos programas o    *
+ * con la documentaciï¿½n contenida en estos libros. Los autores y el       *
+ * editor no serï¿½n responsables en ningï¿½n caso por los daï¿½os consecuentes *
+ * en conexiï¿½n con, o que surjan de, el suministro, desempeï¿½o o uso de    *
  * estos programas.                                                       *
  *************************************************************************/
 

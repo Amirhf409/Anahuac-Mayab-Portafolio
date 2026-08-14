@@ -1,0 +1,45 @@
+Length()
+char letter = fruit.charAt(1);
+
+
+
+String fruit = "Banana";
+but does not include the end position
+        // This will be "ana"
+        String partFrom1To4 = fruit.substring(1, 4);
+        String partFrom4To5 = fruit.substring(4, 6);
+
+        System.out.println("The full string is: " + fruit);
+        System.out.println("The substring from index 1 to 4. 4 excluded: " + partFrom1To4);
+        System.out.println("The substring from index 4 to 5. 5 excluded: " + partFrom4To5);
+
+boolean result1 = fruit1.equals(fruit2);
+
+String fruitInUpperCase = fruit.toUpperCase();
+String fruitInLowerCase = fruit.toLowerCase();
+
+String fruit = "Banana";
+
+        boolean hasAna = fruit.contains("ana");
+        boolean hasBrooks = fruit.contains("brooks");
+
+
+public class Main {
+    public static void main(String args[]) {
+        String text = "Adventure";
+        int NumLetters = text.length();
+        System.out.println(NumLetters);
+        char po3 = text.charAt(3);  
+        System.out.println(po3);
+        String partFrom1To4 = text.substring(1, 4);
+        System.out.println(partFrom1To4);
+
+        String anotherText= "Adventure";
+
+        System.out.println(text.equals(anotherText));
+        System.out.println(anotherText.toUpperCase());
+        System.out.println(anotherText.toLowerCase());
+        System.out.println(anotherText.contains("vent"));
+        System.out.println(anotherText.replace('e', 'a'));
+    }
+}

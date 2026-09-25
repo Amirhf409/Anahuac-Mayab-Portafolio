@@ -12,22 +12,21 @@ public class ArbolBinario {
     }
 
     public void insertar(int info) {
-        // Paso 1: crear el nuevo nodo
         Nodo nuevo;
         nuevo = new Nodo();
         nuevo.info = info;
         nuevo.izq = null;
         nuevo.der = null;
 
-        // Paso 2: si el árbol está vacío, el nuevo nodo es la raíz
+        // Condición para que si el árbol está vacío, el nuevo nodo será la raíz
         if (raiz == null) {
             raiz = nuevo;
         } else {
-            // Paso 3: referencias auxiliares, empezando desde la raíz
+            // Para apuntar a los nodos que ya existen, reco es recorrer.
             Nodo anterior = null;
             Nodo reco = raiz;
 
-            // Pasos 4 y 5: bajar por el árbol hasta encontrar un lugar vacío
+            // Para bajar por el árbol a un lugar vacío
             while (reco != null) {
                 anterior = reco; // guardar el nodo actual (el padre)
                 if (info < reco.info) {

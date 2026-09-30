@@ -1,0 +1,111 @@
+
+Oración: 'el año del anzuelo y la nube'
+Palabras limpias: ['el', 'año', 'del', 'anzuelo', 'y', 'la', 'nube']
+
+Árbol (I = izquierdo, D = derecho):
+el
+├── I: año
+│   ├── I: anzuelo
+│   └── D: del
+└── D: y
+    └── I: la
+        └── D: nube
+
+Inorden:    anzuelo, año, del, el, la, nube, y
+Preorden:   el, año, anzuelo, del, y, la, nube
+Postorden:  anzuelo, del, año, nube, la, y, el
+
+Total de nodos:         7
+Nodos internos:         4
+Palabra máxima (alfab.): y
+Info en las hojas:      anzuelo, del, nube
+Info en nodos internos: el, año, y, la
+============================================================
+
+Oración: 'medio-día y medio día'
+Palabras limpias: ['medio-día', 'y', 'medio', 'día']
+
+Árbol (I = izquierdo, D = derecho):
+medio-día
+├── I: medio
+│   └── I: día
+└── D: y
+
+Inorden:    día, medio, medio-día, y
+Preorden:   medio-día, medio, día, y
+Postorden:  día, medio, y, medio-día
+
+Total de nodos:         4
+Nodos internos:         2
+Palabra máxima (alfab.): y
+Info en las hojas:      día, y
+Info en nodos internos: medio-día, medio
+============================================================
+
+Oración: 'tengo 3 gatos y 10 perros'
+Palabras limpias: ['tengo', '3', 'gatos', 'y', '10', 'perros']
+
+Árbol (I = izquierdo, D = derecho):
+tengo
+├── I: 3
+│   ├── I: 10
+│   └── D: gatos
+│       └── D: perros
+└── D: y
+
+Inorden:    10, 3, gatos, perros, tengo, y
+Preorden:   tengo, 3, 10, gatos, perros, y
+Postorden:  10, perros, gatos, 3, y, tengo
+
+Total de nodos:         6
+Nodos internos:         3
+Palabra máxima (alfab.): y
+Info en las hojas:      10, perros, y
+Info en nodos internos: tengo, 3, gatos
+============================================================
+
+Oración: 'a b c d e'
+Palabras limpias: ['a', 'b', 'c', 'd', 'e']
+
+Árbol (I = izquierdo, D = derecho):
+a
+└── D: b
+    └── D: c
+        └── D: d
+            └── D: e
+
+Inorden:    a, b, c, d, e
+Preorden:   a, b, c, d, e
+Postorden:  e, d, c, b, a
+
+Total de nodos:         5
+Nodos internos:         4
+Palabra máxima (alfab.): e
+Info en las hojas:      e
+Info en nodos internos: a, b, c, d
+============================================================
+
+Oración: 'El perro café persigue al gato, y el gato huye del perro.'
+Palabras limpias: ['el', 'perro', 'café', 'persigue', 'al', 'gato', 'y', 'el', 'gato', 'huye', 'del', 'perro']
+
+Árbol (I = izquierdo, D = derecho):
+el (x2)
+├── I: café
+│   ├── I: al
+│   └── D: del
+└── D: perro (x2)
+    ├── I: gato (x2)
+    │   └── D: huye
+    └── D: persigue
+        └── D: y
+
+Inorden:    al, café, del, el(x2), gato(x2), huye, perro(x2), persigue, y
+Preorden:   el(x2), café, al, del, perro(x2), gato(x2), huye, persigue, y
+Postorden:  al, del, café, huye, gato(x2), y, persigue, perro(x2), el(x2)
+
+Total de nodos:         9
+Nodos internos:         5
+Palabra máxima (alfab.): y
+Info en las hojas:      al, del, huye, y
+Info en nodos internos: el(x2), café, perro(x2), gato(x2), persigue
+============================================================

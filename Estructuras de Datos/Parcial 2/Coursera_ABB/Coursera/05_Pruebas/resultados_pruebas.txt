@@ -1,0 +1,175 @@
+### CASO 1
+
+Oración: 'gato perro casa'
+Palabras limpias: ['gato', 'perro', 'casa']
+
+Árbol (I = izquierdo, D = derecho):
+gato
+├── I: casa
+└── D: perro
+
+Inorden:    casa, gato, perro
+Preorden:   gato, casa, perro
+Postorden:  casa, perro, gato
+
+Total de nodos:         3
+Nodos internos:         1
+Palabra máxima (alfab.): perro
+Info en las hojas:      casa, perro
+Info en nodos internos: gato
+============================================================
+### CASO 2
+
+Oración: 'zorro árbol abeja'
+Palabras limpias: ['zorro', 'árbol', 'abeja']
+
+Árbol (I = izquierdo, D = derecho):
+zorro
+└── I: árbol
+    └── I: abeja
+
+Inorden:    abeja, árbol, zorro
+Preorden:   zorro, árbol, abeja
+Postorden:  abeja, árbol, zorro
+
+Total de nodos:         3
+Nodos internos:         2
+Palabra máxima (alfab.): zorro
+Info en las hojas:      abeja
+Info en nodos internos: zorro, árbol
+============================================================
+### CASO 3
+
+Oración: 'hola'
+Palabras limpias: ['hola']
+
+Árbol (I = izquierdo, D = derecho):
+hola
+
+Inorden:    hola
+Preorden:   hola
+Postorden:  hola
+
+Total de nodos:         1
+Nodos internos:         0
+Palabra máxima (alfab.): hola
+Info en las hojas:      hola
+Info en nodos internos: (ninguno)
+============================================================
+### CASO 4
+
+Oración: 'el perro y el gato y el perro'
+Palabras limpias: ['el', 'perro', 'y', 'el', 'gato', 'y', 'el', 'perro']
+
+Árbol (I = izquierdo, D = derecho):
+el (x3)
+└── D: perro (x2)
+    ├── I: gato
+    └── D: y (x2)
+
+Inorden:    el(x3), gato, perro(x2), y(x2)
+Preorden:   el(x3), perro(x2), gato, y(x2)
+Postorden:  gato, y(x2), perro(x2), el(x3)
+
+Total de nodos:         4
+Nodos internos:         2
+Palabra máxima (alfab.): y
+Info en las hojas:      gato, y(x2)
+Info en nodos internos: el(x3), perro(x2)
+============================================================
+### CASO 5
+
+Oración: 'mi mamá me mima mucho hoy'
+Palabras limpias: ['mi', 'mamá', 'me', 'mima', 'mucho', 'hoy']
+
+Árbol (I = izquierdo, D = derecho):
+mi
+├── I: mamá
+│   ├── I: hoy
+│   └── D: me
+└── D: mima
+    └── D: mucho
+
+Inorden:    hoy, mamá, me, mi, mima, mucho
+Preorden:   mi, mamá, hoy, me, mima, mucho
+Postorden:  hoy, me, mamá, mucho, mima, mi
+
+Total de nodos:         6
+Nodos internos:         3
+Palabra máxima (alfab.): mucho
+Info en las hojas:      hoy, me, mucho
+Info en nodos internos: mi, mamá, mima
+============================================================
+### CASO 6
+
+Oración: 'manzana dedo pera banana zapato uva naranja'
+Palabras limpias: ['manzana', 'dedo', 'pera', 'banana', 'zapato', 'uva', 'naranja']
+
+Árbol (I = izquierdo, D = derecho):
+manzana
+├── I: dedo
+│   └── I: banana
+└── D: pera
+    ├── I: naranja
+    └── D: zapato
+        └── I: uva
+
+Inorden:    banana, dedo, manzana, naranja, pera, uva, zapato
+Preorden:   manzana, dedo, banana, pera, naranja, zapato, uva
+Postorden:  banana, dedo, naranja, uva, zapato, pera, manzana
+
+Total de nodos:         7
+Nodos internos:         4
+Palabra máxima (alfab.): zapato
+Info en las hojas:      banana, naranja, uva
+Info en nodos internos: manzana, dedo, pera, zapato
+============================================================
+### CASO 7
+
+Oración: 'Gato PERRO gato Casa'
+Palabras limpias: ['gato', 'perro', 'gato', 'casa']
+
+Árbol (I = izquierdo, D = derecho):
+gato (x2)
+├── I: casa
+└── D: perro
+
+Inorden:    casa, gato(x2), perro
+Preorden:   gato(x2), casa, perro
+Postorden:  casa, perro, gato(x2)
+
+Total de nodos:         3
+Nodos internos:         1
+Palabra máxima (alfab.): perro
+Info en las hojas:      casa, perro
+Info en nodos internos: gato(x2)
+============================================================
+### CASO 8
+
+Oración: '¡Hola! ¿Cómo estás, amigo? Bien, gracias.'
+Palabras limpias: ['hola', 'cómo', 'estás', 'amigo', 'bien', 'gracias']
+
+Árbol (I = izquierdo, D = derecho):
+hola
+└── I: cómo
+    ├── I: amigo
+    │   └── D: bien
+    └── D: estás
+        └── D: gracias
+
+Inorden:    amigo, bien, cómo, estás, gracias, hola
+Preorden:   hola, cómo, amigo, bien, estás, gracias
+Postorden:  bien, amigo, gracias, estás, cómo, hola
+
+Total de nodos:         6
+Nodos internos:         4
+Palabra máxima (alfab.): hola
+Info en las hojas:      bien, gracias
+Info en nodos internos: hola, cómo, amigo, estás
+============================================================
+### CASO 9
+
+Oración: '  ... ¡¿?! '
+Palabras limpias: []
+No hay palabras válidas; el árbol está vacío.
+============================================================

@@ -1,0 +1,153 @@
+PRÁCTICA: BÚSQUEDA Y ELIMINACIÓN EN UN ABB
+
+Materia: Estructuras de Datos Parcial 2
+Alumno: Amir Moisés Hernández Farah
+Universidad Anáhuac Mayab
+
+1. DIBUJO DEL ÁRBOL INICIAL
+
+Árbol que se forma al insertar en este orden: 50, 30, 20, 40, 70, 60 y 80.
+
+(MI FOTO ESTÁ EN imagenes\arbol_inicial.png)
+
+¿Qué propiedad debe cumplir todo Árbol Binario de Búsqueda?
+Para cada nodo, todos los valores de su lado izquierdo son menores que él y todos los de su lado derecho son mayores.
+
+¿Cuál es la raíz del árbol construido?
+El 50, porque fue el primero en insertarse.
+
+¿Qué nodos son hojas?
+20, 40, 60 y 80, porque no tienen hijos.
+
+¿Qué valores pertenecen al subárbol izquierdo de 50 y cuáles al derecho?
+Izquierdo: 30, 20 y 40. Derecho: 70, 60 y 80.
+
+¿Qué secuencia esperas obtener con el recorrido inorden?
+20 30 40 50 60 70 80, es decir, los números ordenados de menor a mayor.
+
+2. MÉTODO DE BÚSQUEDA
+
+    private boolean buscarRec(Nodo raiz, int clave) {
+        if (raiz == null) return false;          // no está
+        if (clave == raiz.clave) return true;    // la encontramos
+        if (clave < raiz.clave)
+            return buscarRec(raiz.izquierdo, clave);
+        else
+            return buscarRec(raiz.derecho, clave);
+    }
+
+¿Por qué no es necesario recorrer todos los nodos del árbol para buscar una clave?
+Porque en cada nodo sabemos hacia dónde ir. Si la clave es menor nos vamos a la izquierda y si es mayor a la derecha, así que la otra mitad ya no se revisa.
+
+Si se busca 40, ¿qué nodos se visitan y en qué orden?
+50 → 30 → 40. Como 40 es menor que 50 vamos a la izquierda (30); como 40 es mayor que 30 vamos a la derecha y ahí está el 40.
+
+Si se busca 90, ¿qué condición permitirá concluir que no existe?
+Se visita 50 → 70 → 80. Como 90 es mayor que 80 se intenta ir a la derecha de 80, pero ahí no hay nada (null). Llegar a null significa que la clave no existe.
+
+¿Qué valor booleano debe regresar el caso base cuando el nodo actual es null?
+false, porque ya no hay dónde seguir buscando.
+
+¿Qué ocurriría si el árbol no respetara la regla menor-izquierda y mayor-derecha?
+La búsqueda podría irse por el lado equivocado y decir que un número no existe aunque sí esté en el árbol. Para estar seguros habría que revisar todos los nodos.
+
+3. MÉTODO DE ELIMINACIÓN
+
+    private Nodo eliminarRec(Nodo raiz, int clave) {
+        if (raiz == null) return null;           // no existe
+    
+        if (clave < raiz.clave) {
+            raiz.izquierdo = eliminarRec(raiz.izquierdo, clave);
+        } else if (clave > raiz.clave) {
+            raiz.derecho = eliminarRec(raiz.derecho, clave);
+        } else {
+            // hoja o un solo hijo
+            if (raiz.izquierdo == null) return raiz.derecho;
+            if (raiz.derecho == null) return raiz.izquierdo;
+    
+            // dos hijos
+            raiz.clave = minimo(raiz.derecho);
+            raiz.derecho = eliminarRec(raiz.derecho, raiz.clave);
+        }
+        return raiz;
+    }
+
+Así cambia el árbol con las eliminaciones del main (20, 70 y 50):
+
+(MI FOTO ESTA EN: imagenes\arbol_eliminaciones.png)
+
+¿Por qué la eliminación requiere más casos que la búsqueda?
+Porque buscar solo lee el árbol, y eliminar lo cambia. Al quitar un nodo hay que ver qué pasa con sus hijos para que no se pierdan y para que el árbol siga ordenado. Por eso hay tres casos: hoja, un hijo o dos hijos.
+
+¿Qué debe ocurrir si la clave que se desea eliminar no existe?
+Nada. Se llega a null, se regresa null y el árbol queda igual. En la prueba de eliminar el 100, el inorden sigue siendo 30 40 60 80.
+
+¿Por qué eliminar un nodo hoja es el caso más sencillo?
+Porque no tiene hijos que cuidar. Solo se quita y su padre apunta a null.
+
+Si un nodo tiene solamente un hijo, ¿por qué puede devolverse directamente la referencia a ese hijo?
+Porque ese hijo y todo lo que cuelga de él ya están del lado correcto respecto al padre. Si el nodo era hijo izquierdo del padre, todo su subárbol es menor que el padre, así que el hijo puede subir a ocupar su lugar sin romper el orden.
+
+¿Por qué el menor valor del subárbol derecho es un candidato adecuado para sustituir a un nodo con dos hijos?
+Porque es mayor que todo lo que está a la izquierda y menor que todo lo demás de la derecha. Al ponerlo en lugar del nodo eliminado, el árbol sigue ordenado. Por ejemplo, al eliminar 50 lo sustituye el 60.
+
+Después de copiar el valor sustituto, ¿por qué todavía es necesario eliminar ese valor de su ubicación original?
+Porque si no, ese valor quedaría dos veces en el árbol: en su lugar nuevo y en el original.
+
+¿Qué riesgo existiría si se eliminara un nodo con dos hijos sin reconectar correctamente sus subárboles?
+Se perderían nodos, porque ya nadie apuntaría a ellos, o el árbol quedaría desordenado y la búsqueda dejaría de funcionar.
+
+¿Por qué eliminar la raíz puede modificar la variable raiz del árbol?
+Porque la raíz es el inicio del árbol. Por eso el método público hace raiz = eliminarRec(raiz, clave);: si la raíz cambia, la variable se actualiza. En la prueba, al eliminar 50 la nueva raíz es 60.
+
+¿Qué propiedad debe seguir cumpliendo el árbol después de cualquier eliminación?
+La misma de siempre: menores a la izquierda y mayores a la derecha. Lo comprobamos porque el inorden siempre sale ordenado de menor a mayor.
+
+4. MÉTODO AUXILIAR: ENCONTRAR EL VALOR MÍNIMO
+
+    private int minimo(Nodo raiz) {
+        while (raiz.izquierdo != null) {
+            raiz = raiz.izquierdo;
+        }
+        return raiz.clave;
+    }
+
+¿Hacia qué dirección debes desplazarte para encontrar el mínimo?
+Siempre hacia la izquierda, porque ahí están los valores más pequeños.
+
+¿Qué condición indica que ya encontraste el nodo mínimo?
+Cuando el nodo ya no tiene hijo izquierdo (izquierdo == null).
+
+¿Cuál es el mínimo del subárbol cuya raíz es 70 en el árbol inicial?
+El 60, porque es el hijo izquierdo de 70 y ya no tiene más hijos a la izquierda.
+
+5. CAPTURAS DE PRUEBAS
+----------------------
+
+(MI FOTO ESTÁ EN: imagenes\captura_pruebas.png)
+
+  Prueba | Resultado esperado | Resultado obtenido
+  Inorden del árbol inicial | 20 30 40 50 60 70 80 | Igual
+  Buscar 40 (sí existe) | Se encontró | Igual
+  Buscar 90 (no existe) | No se encontró | Igual
+  Eliminar 20 (hoja) | 30 40 50 60 70 80 | Igual
+  Eliminar 70 (dos hijos) | 30 40 50 60 80 | Igual
+  Eliminar 50 (raíz, dos hijos) | 30 40 60 80, nueva raíz 60 | Igual
+  Eliminar 100 (no existe) | El árbol no cambia | Igual
+
+6. REFLEXIONES FINALES
+
+¿Cómo ayuda el recorrido inorden a comprobar que el ABB conserva su estructura?
+En un ABB bien hecho, el inorden siempre da los números ordenados. Si después de eliminar algo el inorden sale desordenado, sabemos que algo se rompió.
+
+Explica con tus palabras el caso de eliminación que consideraste más difícil.
+El de un nodo con dos hijos. No se puede quitar nada más, porque quedarían dos ramas sueltas. Lo que se hace es buscar el número más pequeño del lado derecho, copiarlo en el nodo que queremos borrar y después borrar ese número de donde estaba. Al principio cuesta entender que en realidad no se quita el nodo, sino que se le cambia el valor.
+
+¿Qué papel cumple la recursividad en los métodos de búsqueda y eliminación?
+Permite resolver el problema en pedacitos: cada llamada solo decide qué hacer con un nodo y le pasa el resto al subárbol izquierdo o derecho. En la eliminación además ayuda a reconectar, porque cada llamada regresa cómo debe quedar su parte del árbol.
+
+¿Qué aprendiste sobre el cambio de referencias entre nodos al eliminar elementos?
+Que eliminar en realidad es cambiar a quién apunta cada nodo. Por eso se escribe raiz.izquierdo = eliminarRec(...): el padre se queda apuntando a lo que regrese la llamada, ya sea el mismo hijo, otro nodo o null.
+
+Si tuvieras que explicar a un compañero la diferencia entre buscar y eliminar en un ABB, ¿qué le dirías?
+Que buscar es como preguntar por un camino: vas a la izquierda o a la derecha hasta encontrarlo o hasta que ya no hay camino, sin tocar nada. Eliminar empieza igual, pero cuando lo encuentras tienes que quitarlo y acomodar a sus hijos para que el árbol siga ordenado.

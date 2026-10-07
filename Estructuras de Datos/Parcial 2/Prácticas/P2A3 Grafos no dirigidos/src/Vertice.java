@@ -1,45 +1,27 @@
 /**
- * Clase Vertice - Representa un vértice (nodo) de un grafo.
- *
- * Conceptos reforzados:
- * - Vértice como elemento fundamental de un grafo V(G)
- * - Vértice aislado: no incide arista alguna
- * - Grado de un vértice: número de extremos de aristas que salen de él
+ * Clase Vertice
+ * Representa un punto (nodo) del grafo.
  *
  * @author Amir Moisés Hernández Farah
- * @version 1.0
  * Periodo 202660
  */
 public class Vertice {
 
-    // ============================
-    // ATRIBUTOS
-    // ============================
-    private String nombre;     // Nombre del vértice (ej: "v1", "v2")
-    private int id;            // Identificador numérico único
-    private int grado;         // Grado del vértice (se calcula desde Grafo)
-    private boolean esAislado; // true si no incide arista alguna (grado == 0)
+    // Atributos
+    private String nombre;     // ej: "v1"
+    private int id;            // número para identificarlo
+    private int grado;         // cuántas aristas le llegan (lo calcula el Grafo)
+    private boolean esAislado; // true si no tiene ninguna arista
 
-    // ============================
-    // CONSTRUCTORES
-    // ============================
-
-    /**
-     * Constructor vacío.
-     * Inicializa el vértice con valores por defecto.
-     */
+    // Constructor vacío
     public Vertice() {
-        this.nombre = "";
-        this.id = 0;
-        this.grado = 0;
-        this.esAislado = true;
+        nombre = "";
+        id = 0;
+        grado = 0;
+        esAislado = true;
     }
 
-    /**
-     * Constructor parametrizado.
-     * @param nombre Nombre del vértice (ej: "v1")
-     * @param id Identificador numérico único
-     */
+    // Constructor con nombre e id
     public Vertice(String nombre, int id) {
         this.nombre = nombre;
         this.id = id;
@@ -47,10 +29,7 @@ public class Vertice {
         this.esAislado = true;
     }
 
-    // ============================
-    // GETTERS Y SETTERS
-    // ============================
-
+    // Getters y setters
     public String getNombre() {
         return nombre;
     }
@@ -83,19 +62,12 @@ public class Vertice {
         this.esAislado = esAislado;
     }
 
-    // ============================
-    // MÉTODOS AUXILIARES
-    // ============================
-
-    /**
-     * Representación en texto del vértice.
-     * Formato esperado: "v1 (grado: 3)" o "v4 (grado: 0) [AISLADO]"
-     */
+    // Ejemplo: "v1 (grado: 3)" o "v4 (grado: 0) [AISLADO]"
     @Override
     public String toString() {
         String texto = nombre + " (grado: " + grado + ")";
         if (esAislado) {
-            texto += " [AISLADO]";
+            texto = texto + " [AISLADO]";
         }
         return texto;
     }

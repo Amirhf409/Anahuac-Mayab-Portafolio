@@ -1,65 +1,39 @@
 /**
- * Clase Arista - Representa una arista (conexión) de un grafo.
- *
- * Conceptos reforzados:
- * - Arista como elemento de E(G) que conecta puntos extremos
- * - Bucle: arista con un solo punto extremo (extremo1 == extremo2)
- * - Aristas paralelas: dos aristas distintas con los mismos extremos
- * - Incidencia: una arista incide sobre cada uno de sus puntos extremos
+ * Clase Arista
+ * Representa una línea que une dos vértices.
+ * Si los dos extremos son el mismo vértice, es un bucle.
  *
  * @author Amir Moisés Hernández Farah
- * @version 1.0
  * Periodo 202660
  */
 public class Arista {
 
-    // ============================
-    // ATRIBUTOS
-    // ============================
-    private String nombre;     // Nombre de la arista (ej: "e1", "e2")
-    private int id;            // Identificador numérico único
-    private Vertice extremo1;  // Primer punto extremo
-    private Vertice extremo2;  // Segundo punto extremo
-    private boolean esBucle;   // true si extremo1 == extremo2
+    // Atributos
+    private String nombre;     // ej: "e1"
+    private int id;
+    private Vertice extremo1;
+    private Vertice extremo2;
+    private boolean esBucle;   // true si extremo1 y extremo2 son el mismo
 
-    // ============================
-    // CONSTRUCTORES
-    // ============================
-
-    /**
-     * Constructor vacío.
-     * Inicializa la arista con valores por defecto.
-     */
+    // Constructor vacío
     public Arista() {
-        this.nombre = "";
-        this.id = 0;
-        this.extremo1 = null;
-        this.extremo2 = null;
-        this.esBucle = false;
+        nombre = "";
+        id = 0;
+        extremo1 = null;
+        extremo2 = null;
+        esBucle = false;
     }
 
-    /**
-     * Constructor parametrizado.
-     * Determina automáticamente si la arista es un bucle.
-     *
-     * @param nombre Nombre de la arista (ej: "e1")
-     * @param id Identificador numérico único
-     * @param extremo1 Primer vértice (punto extremo)
-     * @param extremo2 Segundo vértice (punto extremo)
-     */
+    // Constructor con datos; aquí revisamos si es bucle
     public Arista(String nombre, int id, Vertice extremo1, Vertice extremo2) {
         this.nombre = nombre;
         this.id = id;
         this.extremo1 = extremo1;
         this.extremo2 = extremo2;
-        // Es bucle si ambos extremos son el mismo vértice
-        this.esBucle = mismoVertice(extremo1, extremo2);
+        this.esBucle = (extremo1.getId() == extremo2.getId());
     }
 
-    // ============================
-    // GETTERS
-    // ============================
-
+    // Getters
     public String getNombre() {
         return nombre;
     }
@@ -80,58 +54,28 @@ public class Arista {
         return esBucle;
     }
 
-    // ============================
-    // MÉTODOS DE LÓGICA
-    // ============================
-
-    /**
-     * Compara dos vértices por referencia o por id.
-     */
-    private static boolean mismoVertice(Vertice a, Vertice b) {
-        if (a == null || b == null) {
-            return false;
-        }
-        return a == b || a.getId() == b.getId();
-    }
-
-    /**
-     * Determina si esta arista es PARALELA a otra arista.
-     * Dos aristas son paralelas si tienen el mismo conjunto de puntos extremos.
-     *
-     * Ejemplo: e2{v1,v3} y e3{v1,v3} son paralelas.
-     *
-     * @param otra La otra arista a comparar
-     * @return true si ambas aristas comparten los mismos puntos extremos
-     */
+    // Dos aristas son paralelas si unen los mismos vértices
+    // ({v1, v3} es lo mismo que {v3, v1})
     public boolean esParalela(Arista otra) {
-        if (otra == null || this.id == otra.id) {
-            return false; // una arista no es paralela a sí misma
+        if (this.id == otra.id) {
+            return false; // es la misma arista
         }
-        boolean mismoOrden = mismoVertice(this.extremo1, otra.extremo1)
-                && mismoVertice(this.extremo2, otra.extremo2);
-        boolean ordenInverso = mismoVertice(this.extremo1, otra.extremo2)
-                && mismoVertice(this.extremo2, otra.extremo1);
-        return mismoOrden || ordenInverso;
+        int a1 = this.extremo1.getId();
+        int a2 = this.extremo2.getId();
+        int b1 = otra.extremo1.getId();
+        int b2 = otra.extremo2.getId();
+
+        boolean mismoOrden = (a1 == b1 && a2 == b2);
+        boolean alReves = (a1 == b2 && a2 == b1);
+        return mismoOrden || alReves;
     }
 
-    /**
-     * Determina si esta arista INCIDE en un vértice dado.
-     * Una arista incide sobre cada uno de sus puntos extremos.
-     *
-     * @param v El vértice a verificar
-     * @return true si el vértice es uno de los puntos extremos de esta arista
-     */
+    // La arista incide en v si v es uno de sus extremos
     public boolean incideEn(Vertice v) {
-        return mismoVertice(extremo1, v) || mismoVertice(extremo2, v);
+        return extremo1.getId() == v.getId() || extremo2.getId() == v.getId();
     }
 
-    // ============================
-    // MÉTODOS AUXILIARES
-    // ============================
-
-    /**
-     * Texto de los puntos extremos: "{v1, v2}" o "{v5}" si es bucle.
-     */
+    // Regresa los extremos así: "{v1, v2}" o "{v5}" si es bucle
     public String extremosTexto() {
         if (esBucle) {
             return "{" + extremo1.getNombre() + "}";
@@ -139,15 +83,12 @@ public class Arista {
         return "{" + extremo1.getNombre() + ", " + extremo2.getNombre() + "}";
     }
 
-    /**
-     * Representación en texto de la arista.
-     * Formato: "e1: {v1, v2}" o "e6: {v5} [BUCLE]"
-     */
+    // Ejemplo: "e1: {v1, v2}" o "e6: {v5} [BUCLE]"
     @Override
     public String toString() {
         String texto = nombre + ": " + extremosTexto();
         if (esBucle) {
-            texto += " [BUCLE]";
+            texto = texto + " [BUCLE]";
         }
         return texto;
     }

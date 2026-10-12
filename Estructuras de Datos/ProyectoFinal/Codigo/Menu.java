@@ -30,12 +30,11 @@ public class Menu {
                 case 1: crearDirectorio(); break;
                 case 2: insertarArchivo(); break;
                 case 3: buscarElemento(); break;
-                case 4: eliminarElemento(); break;
-                case 5: System.out.println("=== RECORRIDO INORDEN ===");    arbol.inorden();    break;
-                case 6: System.out.println("=== RECORRIDO PREORDEN ===");   arbol.preorden();   break;
-                case 7: System.out.println("=== RECORRIDO POSTORDEN ===");  arbol.postorden();  break;
-                case 8: mostrarInformacion(); break;
-                case 9: System.out.println("=== ESTRUCTURA DEL ABB ==="); arbol.mostrarEstructura(); break;
+                case 4: System.out.println(arbol.eliminar("")); break;   // TODO: pedir el nombre
+                case 5: arbol.inorden(); break;
+                case 6: arbol.preorden(); break;
+                case 7: arbol.postorden(); break;
+                case 8: System.out.println("Opcion en desarrollo."); break;  // TODO: mostrar informacion
                 case 0: System.out.println("Gracias por usar el Sistema de Archivos ABB. Hasta pronto!"); break;
                 default: System.out.println("Opcion no valida, intente de nuevo.");
             }
@@ -64,7 +63,6 @@ public class Menu {
         System.out.println("6. Recorrido preorden");
         System.out.println("7. Recorrido postorden");
         System.out.println("8. Informacion de un elemento");
-        System.out.println("9. Ver estructura del arbol");
         System.out.println("0. Salir");
     }
 
@@ -122,41 +120,6 @@ public class Menu {
         }
     }
 
-    // ---------- opcion 4 ----------
-    private void eliminarElemento() {
-        System.out.println("=== ELIMINAR ELEMENTO ===");
-        String nombre = leerTexto("Nombre a eliminar: ").trim();
-        ElementoSistema elemento = arbol.buscar(nombre);
-
-        // si es un directorio con elementos debajo, primero avisamos y pedimos confirmacion
-        if (elemento != null && elemento.puedeTenerHijos() && !elemento.esHoja()
-                && elemento != arbol.getRaiz()) {
-            int debajo = arbol.contarDescendientes(elemento);
-            System.out.println("AVISO: El directorio '" + nombre + "' tiene " + debajo + " elemento(s) debajo.");
-            String respuesta = leerTexto("Desea eliminarlo? Sus elementos se reacomodan en el arbol (S/N): ");
-            if (!respuesta.trim().equalsIgnoreCase("S")) {
-                System.out.println("Operacion cancelada.");
-                return;
-            }
-        }
-        System.out.println(arbol.eliminar(nombre));
-    }
-
-    // ---------- opcion 8 ----------
-    private void mostrarInformacion() {
-        System.out.println("=== INFORMACION DEL ELEMENTO ===");
-        String nombre = leerTexto("Nombre del elemento: ");
-        ElementoSistema elemento = arbol.buscar(nombre.trim());
-        if (elemento == null) {
-            System.out.println("El elemento no existe en el sistema de archivos.");
-            return;
-        }
-        elemento.mostrarInformacion();
-        System.out.println("Hijo izquierdo: " + nombreONulo(elemento.getIzquierdo()));
-        System.out.println("Hijo derecho: " + nombreONulo(elemento.getDerecho()));
-        System.out.println("Es hoja: " + (elemento.esHoja() ? "Si" : "No"));
-    }
-
     // ---------- metodos de apoyo ----------
 
     // un directorio no puede tener nombre vacio ni extension (ej. "Fotos.jpg" no es valido)
@@ -171,10 +134,6 @@ public class Menu {
             return false;
         }
         return true;
-    }
-
-    private String nombreONulo(ElementoSistema nodo) {
-        return (nodo == null) ? "null" : nodo.getNombre();
     }
 
     private String leerTexto(String mensaje) {

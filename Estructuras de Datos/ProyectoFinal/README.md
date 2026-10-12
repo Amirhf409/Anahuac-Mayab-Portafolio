@@ -20,15 +20,16 @@ Cada nodo del árbol es un **directorio** 📁 o un **archivo** 📄, y se orden
 
 ## ✨ Funcionalidades
 
-| # | Opción | Descripción |
-|---|--------|-------------|
-| 1 | Crear directorio | Inserta una carpeta en el ABB |
-| 2 | Insertar archivo | Inserta un archivo (nombre, extensión, tamaño) |
-| 3 | Buscar elemento | Busca por nombre y muestra su información |
-| 4 | Eliminar elemento | Situación 1 (hoja), 2 (un hijo) y 3 (dos hijos) |
-| 5-7 | Recorridos | Inorden, preorden y postorden |
-| 8 | Información | Datos del elemento y sus hijos |
-| 9 | Estructura | Dibuja el árbol en consola |
+| # | Opción | Descripción | Estado |
+|---|--------|-------------|--------|
+| 1 | Crear directorio | Inserta una carpeta en el ABB | ✅ |
+| 2 | Insertar archivo | Inserta un archivo (nombre, extensión, tamaño) | ✅ |
+| 3 | Buscar elemento | Busca por nombre y muestra su información | ✅ |
+| 4 | Eliminar elemento | Situación 1 (hoja), 2 (un hijo) y 3 (dos hijos) | 🚧 |
+| 5-7 | Recorridos | Inorden, preorden y postorden | 🚧 |
+| 8 | Información | Datos del elemento y sus hijos | 🚧 |
+
+> ✅ terminado · 🚧 en desarrollo
 
 ## 🧩 Diseño orientado a objetos
 

@@ -1,0 +1,102 @@
+==============================================
+ TEMPERATURAS DE MÉRIDA - SEPTIEMBRE
+ Ordenamiento con Bubble Sort
+==============================================
+Total de registros: 30
+
+--- Temperaturas registradas (orden original) ---
+36.8, 1 sep
+37.5, 2 sep
+38.9, 3 sep
+37.2, 4 sep
+36.4, 5 sep
+35.1, 6 sep
+34.6, 7 sep
+35.8, 8 sep
+35.2, 9 sep
+36.9, 10 sep
+37.7, 11 sep
+38.6, 12 sep
+37.9, 13 sep
+36.3, 14 sep
+34.2, 15 sep
+33.8, 16 sep
+35.0, 17 sep
+36.1, 18 sep
+36.7, 19 sep
+35.5, 20 sep
+34.4, 21 sep
+33.6, 22 sep
+34.9, 23 sep
+35.7, 24 sep
+36.2, 25 sep
+35.3, 26 sep
+34.1, 27 sep
+33.9, 28 sep
+34.8, 29 sep
+35.6, 30 sep
+
+--- Orden ascendente (menor a mayor) ---
+33.6, 22 sep
+33.8, 16 sep
+33.9, 28 sep
+34.1, 27 sep
+34.2, 15 sep
+34.4, 21 sep
+34.6, 7 sep
+34.8, 29 sep
+34.9, 23 sep
+35.0, 17 sep
+35.1, 6 sep
+35.2, 9 sep
+35.3, 26 sep
+35.5, 20 sep
+35.6, 30 sep
+35.7, 24 sep
+35.8, 8 sep
+36.1, 18 sep
+36.2, 25 sep
+36.3, 14 sep
+36.4, 5 sep
+36.7, 19 sep
+36.8, 1 sep
+36.9, 10 sep
+37.2, 4 sep
+37.5, 2 sep
+37.7, 11 sep
+37.9, 13 sep
+38.6, 12 sep
+38.9, 3 sep
+
+--- Orden descendente (mayor a menor) ---
+38.9, 3 sep
+38.6, 12 sep
+37.9, 13 sep
+37.7, 11 sep
+37.5, 2 sep
+37.2, 4 sep
+36.9, 10 sep
+36.8, 1 sep
+36.7, 19 sep
+36.4, 5 sep
+36.3, 14 sep
+36.2, 25 sep
+36.1, 18 sep
+35.8, 8 sep
+35.7, 24 sep
+35.6, 30 sep
+35.5, 20 sep
+35.3, 26 sep
+35.2, 9 sep
+35.1, 6 sep
+35.0, 17 sep
+34.9, 23 sep
+34.8, 29 sep
+34.6, 7 sep
+34.4, 21 sep
+34.2, 15 sep
+34.1, 27 sep
+33.9, 28 sep
+33.8, 16 sep
+33.6, 22 sep
+

@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌳 Proyecto Final — Sistema de Archivos con Árbol Binario de Búsqueda
+# 🌳 Proyecto 5 — Sistema de Archivos con Árbol Binario de Búsqueda
 
 **Estructuras de Datos · Universidad Anáhuac Mayab**
 
@@ -49,7 +49,7 @@ Main ──► Menu
 ## 📂 Estructura
 
 ```
-ProyectoFinal/
+Proyecto 5 Sistema de Archivos/
 ├── Codigo/
 │   ├── ElementoSistema.java      # nodo del árbol (clase padre)
 │   ├── Directorio.java           # hereda de ElementoSistema

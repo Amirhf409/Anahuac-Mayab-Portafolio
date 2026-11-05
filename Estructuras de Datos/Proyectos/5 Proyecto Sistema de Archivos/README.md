@@ -49,7 +49,7 @@ Main ──► Menu
 ## 📂 Estructura
 
 ```
-Proyecto 5 Sistema de Archivos/
+5 Proyecto Sistema de Archivos/
 ├── Codigo/
 │   ├── ElementoSistema.java      # nodo del árbol (clase padre)
 │   ├── Directorio.java           # hereda de ElementoSistema

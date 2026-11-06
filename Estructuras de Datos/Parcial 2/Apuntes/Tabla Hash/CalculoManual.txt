@@ -1,0 +1,65 @@
+TABLA HASH - CÁLCULO MANUAL
+Apuntes 06/11/2026 - Estructuras de Datos
+Amir Moisés Hernández Farah
+
+Función hash: h(x) = x mod 10
+Tamaño del arreglo: 10 posiciones (0 a 9)
+Valores: 25, 18, 42, 38, 13, 27
+
+x mod 10 es el residuo de dividir x entre 10, o sea, el último dígito del número.
+
+
+1. CÁLCULO DE LA FUNCIÓN HASH
+
+h(25) = 25 mod 10 = 5     (25 / 10 = 2, residuo 5)
+h(18) = 18 mod 10 = 8     (18 / 10 = 1, residuo 8)
+h(42) = 42 mod 10 = 2     (42 / 10 = 4, residuo 2)
+h(38) = 38 mod 10 = 8     (38 / 10 = 3, residuo 8)
+h(13) = 13 mod 10 = 3     (13 / 10 = 1, residuo 3)
+h(27) = 27 mod 10 = 7     (27 / 10 = 2, residuo 7)
+
+
+2. COLISIÓN
+
+El 18 y el 38 dan la misma posición (8). A esto se le llama colisión.
+Como el 18 se insertó primero, se queda en la posición 8.
+Para el 38 se busca la siguiente posición libre: la 9 está vacía,
+así que el 38 se guarda en la posición 9 (prueba lineal).
+
+
+3. INSERCIÓN PASO A PASO
+
+Número | h(x) | Posición final | Nota
+-------+------+----------------+---------------------------
+  25   |  5   |       5        |
+  18   |  8   |       8        |
+  42   |  2   |       2        |
+  38   |  8   |       9        | Colisión con 18, pasa a la 9
+  13   |  3   |       3        |
+  27   |  7   |       7        |
+
+
+4. TABLA FINAL
+
+Posición | Valor
+---------+-------
+    0    | vacía
+    1    | vacía
+    2    | 42
+    3    | 13
+    4    | vacía
+    5    | 25
+    6    | vacía
+    7    | 27
+    8    | 18
+    9    | 38
+
+
+5. BÚSQUEDA
+
+Para buscar un número se calcula h(x) y se va directo a esa posición,
+sin recorrer todo el arreglo como en la búsqueda lineal.
+
+Ejemplo, buscar 42: h(42) = 2 -> en la posición 2 está el 42 -> encontrado.
+Ejemplo, buscar 38: h(38) = 8 -> en la 8 está el 18, no es -> se revisa la 9 -> está el 38 -> encontrado.
+Ejemplo, buscar 48: h(48) = 8 -> está el 18 -> la 9 tiene 38 -> la 0 está vacía -> no existe.

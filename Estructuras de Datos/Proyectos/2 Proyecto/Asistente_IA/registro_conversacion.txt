@@ -1,0 +1,18 @@
+CONVERSACIÓN CON EL ASISTENTE DE IA (Claude)
+Proyecto 2 - Carrito de compras · Equipo ProyectoFinal 7
+
+Enlace (cuenta de Amir): https://claude.ai/chat/6fd2c02c-2132-4643-a202-fdcd3a887441
+Las capturas de cada pregunta están en capturas\conversacion_ia.
+
+Preguntas realizadas:
+1. ¿Cómo está organizado? Explícame su arquitectura. (se compartió carrito_compras.py)
+2. ¿Qué hace cada clase y cómo se relacionan entre sí?
+3. ¿Qué son @property, @cantidad.setter y @staticmethod?
+4. ¿El código usa algún patrón de diseño?
+5. Explícame paso a paso qué pasa cuando agrego un producto al carrito.
+6. ¿Cómo funciona la búsqueda por ID o por nombre?
+7. ¿Cuáles son las fortalezas del código y qué se podría mejorar?
+8. ¿Qué refactorizaciones nos recomiendas? (la primera respuesta quedó incompleta; se repitió al final)
+9. Ayúdanos a pasar el programa a modo gráfico sin cambiar la lógica.
+10. Genera docstrings siguiendo buenas prácticas.
+11. Revisa que la documentación coincida con el código.

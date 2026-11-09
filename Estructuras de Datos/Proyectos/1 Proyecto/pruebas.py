@@ -4,6 +4,7 @@ from arreglo_paralelo import ArregloParalelo
 from arreglo_serie import ArregloSerie
 from dibujo_resistencia import DibujoResistencia
 from resistencia import Resistencia
+from ventana_principal import color_de_texto, rgb_a_hex
 
 # Aquí voy guardando True o False por cada prueba que hago
 resultados = []
@@ -152,6 +153,16 @@ def contar_bandas(dibujo, pieza):
     return bandas
 
 
+# Revisa las funciones que usa la ventana para pintar los colores (R6)
+def probar_interfaz():
+    print("\nR6. Interfaz gráfica")
+    verificar("rojo a hexadecimal", rgb_a_hex([255, 0, 0]), "#ff0000")
+    verificar("negro a hexadecimal", rgb_a_hex([0, 0, 0]), "#000000")
+    verificar("marrón a hexadecimal", rgb_a_hex([139, 69, 19]), "#8b4513")
+    verificar("texto blanco sobre negro", color_de_texto([0, 0, 0]), "#ffffff")
+    verificar("texto negro sobre amarillo", color_de_texto([246, 211, 45]), "#000000")
+
+
 # Corre todas las pruebas y muestra cuántas salieron bien
 def main():
     print("PRUEBAS DEL PROYECTO DE ARREGLOS - RESISTENCIA ELÉCTRICA")
@@ -160,6 +171,7 @@ def main():
     probar_requerimiento_3()
     probar_herencia()
     probar_dibujo()
+    probar_interfaz()
 
     correctas = 0
     for i in range(len(resultados)):

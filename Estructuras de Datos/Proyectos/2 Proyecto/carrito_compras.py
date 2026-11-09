@@ -1,35 +1,21 @@
-"""Carrito de compras 
-Equipo 7 - Proyecto final 
+"""Versión de consola del carrito de compras (menú de texto).
+
+Es la interfaz original del proyecto. La lógica ahora está en modelo.py,
+así que este archivo solo pide datos y muestra resultados en la terminal.
+Para la versión con ventana usar main.py.
+
+Equipo ProyectoFinal 7 - Proyecto 2
 """
 
 import os
 import sys
-import unicodedata
 
-
-
-# Utilidades
-
-class CarritoError(Exception):
-    """Error de negocio (producto inexistente, cantidad inválida, etc.)."""
-
-
-def normalizar(texto):
-    """Minúsculas y sin acentos, para comparar nombres ('Audífonos' == 'audifonos')."""
-    sin_acentos = unicodedata.normalize("NFD", texto)
-    sin_acentos = "".join(c for c in sin_acentos if not unicodedata.combining(c))
-    return sin_acentos.casefold().strip()
-
-
-def formatear_dinero(monto):
-    """450 -> '$450'; 450.5 -> '$450.50'."""
-    if float(monto).is_integer():
-        return f"${int(monto)}"
-    return f"${monto:.2f}"
+from modelo import Carrito, CarritoError, catalogo_inicial
+from utilidades import filtrar_por_referencia, formatear_dinero, normalizar
 
 
 def construir_tabla(encabezados, filas, alineacion):
-    """Devuelve la tabla como lista de líneas de texto.
+    """Arma una tabla de texto y la regresa como lista de líneas.
 
     alineacion: una letra por columna, 'i' (izquierda) o 'd' (derecha).
     """
@@ -51,172 +37,6 @@ def construir_tabla(encabezados, filas, alineacion):
     return [linea, encabezado, linea] + [formatear(f) for f in filas_txt] + [linea]
 
 
-def filtrar_por_referencia(elementos, referencia):
-    """Busca en una lista de elementos con .id y .nombre.
-
-    Si la referencia es un número se busca por ID; si no, por nombre
-    (coincidencia exacta primero y, si no hay, coincidencia parcial).
-    """
-    ref = referencia.strip()
-    if not ref:
-        return []
-    if ref.isascii() and ref.isdigit():
-        return [e for e in elementos if e.id == int(ref)]
-    ref_norm = normalizar(ref)
-    exactos = [e for e in elementos if normalizar(e.nombre) == ref_norm]
-    if exactos:
-        return exactos
-    return [e for e in elementos if ref_norm in normalizar(e.nombre)]
-
-
-
-# Modelo
-
-class Producto:
-    """Producto del catálogo: ID, nombre, categoría y precio."""
-
-    def __init__(self, id_producto, nombre, categoria, precio):
-        if precio < 0:
-            raise CarritoError("El precio de un producto no puede ser negativo.")
-        self.id = id_producto
-        self.nombre = nombre
-        self.categoria = categoria
-        self.precio = precio
-
-    def como_lista(self):
-        return [self.id, self.nombre, self.precio]
-
-
-class ItemCarrito:
-    """Línea del carrito: un producto y la cantidad que se desea comprar."""
-
-    def __init__(self, producto, cantidad):
-        self.producto = producto
-        self.cantidad = cantidad
-
-    @property
-    def id(self):
-        return self.producto.id
-
-    @property
-    def nombre(self):
-        return self.producto.nombre
-
-    @property
-    def precio(self):
-        return self.producto.precio
-
-    @property
-    def cantidad(self):
-        return self._cantidad
-
-    @cantidad.setter
-    def cantidad(self, valor):
-        if not isinstance(valor, int) or valor < 1:
-            raise CarritoError("La cantidad debe ser un número entero mayor o igual a 1.")
-        self._cantidad = valor
-
-    @property
-    def subtotal(self):
-        return self.precio * self.cantidad
-
-    def como_lista(self):
-        return [self.id, self.nombre, self.precio, self.cantidad]
-
-
-class Catalogo:
-    """Catálogo de productos, almacenado en una lista."""
-
-    def __init__(self, productos=None):
-        self.productos = list(productos) if productos else []
-
-    def agregar(self, producto):
-        if self.buscar_por_id(producto.id) is not None:
-            raise CarritoError(f"Ya existe un producto con ID {producto.id}.")
-        self.productos.append(producto)
-
-    def buscar_por_id(self, id_producto):
-        for producto in self.productos:
-            if producto.id == id_producto:
-                return producto
-        return None
-
-    def buscar_por_nombre(self, texto):
-        """Productos cuyo nombre contiene el texto (sin distinguir acentos ni mayúsculas)."""
-        texto_norm = normalizar(texto)
-        if not texto_norm:
-            return []
-        return [p for p in self.productos if texto_norm in normalizar(p.nombre)]
-
-
-class Carrito:
-    """Carrito de compras, almacenado en una lista de ItemCarrito."""
-
-    def __init__(self):
-        self.items = []
-
-    def esta_vacio(self):
-        return len(self.items) == 0
-
-    def buscar_item(self, id_producto):
-        for item in self.items:
-            if item.id == id_producto:
-                return item
-        return None
-
-    def agregar(self, producto, cantidad):
-        """Agrega el producto; si ya estaba en el carrito suma la cantidad."""
-        item = self.buscar_item(producto.id)
-        if item is None:
-            item = ItemCarrito(producto, cantidad)
-            self.items.append(item)
-        else:
-            item.cantidad = item.cantidad + cantidad
-        return item
-
-    def modificar_cantidad(self, id_producto, nueva_cantidad):
-        item = self.buscar_item(id_producto)
-        if item is None:
-            raise CarritoError("Ese producto no está en el carrito.")
-        item.cantidad = nueva_cantidad
-        return item
-
-    def eliminar(self, id_producto):
-        item = self.buscar_item(id_producto)
-        if item is None:
-            raise CarritoError("Ese producto no está en el carrito.")
-        self.items.remove(item)
-        return item
-
-    def vaciar(self):
-        self.items.clear()
-
-    @property
-    def total(self):
-        return sum(item.subtotal for item in self.items)
-
-    @property
-    def total_articulos(self):
-        return sum(item.cantidad for item in self.items)
-
-    @property
-    def total_productos(self):
-        return len(self.items)
-
-
-def catalogo_inicial():
-    """Catálogo precargado de la tienda."""
-    return Catalogo([
-        Producto(1, "Teclado", "Accesorios", 450),
-        Producto(2, "Mouse", "Accesorios", 250),
-        Producto(3, "Monitor", "Electrónica", 3200),
-        Producto(4, "Audífonos", "Audio", 800),
-        Producto(5, "Memoria USB", "Almacenamiento", 180),
-    ])
-
-
-# Interfaz de consola
-
 class AplicacionCarrito:
     """Menú de consola que conecta al usuario con el catálogo y el carrito."""
 
@@ -233,17 +53,20 @@ class AplicacionCarrito:
     ]
 
     def __init__(self):
+        """Crea el catálogo con los productos de la tienda y un carrito vacío."""
         self.catalogo = catalogo_inicial()
         self.carrito = Carrito()
 
     # entrada / salida 
     @staticmethod
     def limpiar_pantalla():
+        """Borra la pantalla de la terminal (cls en Windows, clear en Linux/Mac)."""
         if sys.stdout.isatty():
             os.system("cls" if os.name == "nt" else "clear")
 
     @staticmethod
     def pausar(mensaje="Presione ENTER para continuar..."):
+        """Espera a que el usuario presione ENTER."""
         print()
         input(mensaje)
 
@@ -272,6 +95,7 @@ class AplicacionCarrito:
 
     @staticmethod
     def titulo(texto, ancho=0):
+        """Imprime un título centrado, por ejemplo === CARRITO DE COMPRAS ===."""
         print()
         print(f"=== {texto} ===".center(ancho))
 
@@ -293,6 +117,7 @@ class AplicacionCarrito:
 
     @staticmethod
     def imprimir_lista_corta(elementos):
+        """Imprime solo ID y nombre, se usa cuando hay varias coincidencias."""
         for linea in construir_tabla(
             ["ID", "Producto"], [[e.id, e.nombre] for e in elementos], "id"
         ):
@@ -300,6 +125,7 @@ class AplicacionCarrito:
 
     # ----- pantallas -----
     def imprimir_catalogo(self, productos, titulo="CATÁLOGO DE PRODUCTOS"):
+        """Imprime una tabla con los productos que recibe."""
         filas = [[p.id, p.nombre, p.categoria, formatear_dinero(p.precio)] for p in productos]
         tabla = construir_tabla(["ID", "Producto", "Categoría", "Precio"], filas, "iiid")
         self.titulo(titulo, len(tabla[0]))
@@ -307,6 +133,7 @@ class AplicacionCarrito:
             print(linea)
 
     def imprimir_carrito(self, titulo="CARRITO DE COMPRAS", con_precio=True):
+        """Imprime el carrito en una tabla y regresa el ancho de la tabla."""
         if con_precio:
             encabezados = ["ID", "Producto", "Precio", "Cant.", "Subtotal"]
             filas = [[i.id, i.nombre, formatear_dinero(i.precio), i.cantidad,
@@ -333,6 +160,7 @@ class AplicacionCarrito:
 
     # ----- opciones del menú -----
     def mostrar_menu(self):
+        """Limpia la pantalla e imprime las 9 opciones del menú."""
         self.limpiar_pantalla()
         self.titulo("CARRITO DE COMPRAS")
         print()
@@ -341,10 +169,12 @@ class AplicacionCarrito:
         print()
 
     def opcion_mostrar_catalogo(self):
+        """Opción 1: muestra todos los productos."""
         self.imprimir_catalogo(self.catalogo.productos)
         self.pausar("Presione ENTER para volver al menú...")
 
     def opcion_buscar(self):
+        """Opción 2: busca productos por ID o por nombre."""
         print("\nBuscar producto")
         print("1. Por ID")
         print("2. Por nombre")
@@ -359,7 +189,8 @@ class AplicacionCarrito:
             texto = input("Nombre del producto: ").strip()
             if not texto:
                 return
-            resultados = self.catalogo.buscar_por_nombre(texto)
+            # misma búsqueda que al agregar: primero nombre exacto y luego parcial
+            resultados = filtrar_por_referencia(self.catalogo.productos, texto)
         elif modo == "":
             return
         else:
@@ -374,6 +205,7 @@ class AplicacionCarrito:
         self.pausar()
 
     def opcion_agregar(self):
+        """Opción 3: pide un producto y una cantidad y lo agrega al carrito."""
         producto = self.elegir(self.catalogo.productos,
                                "ID o nombre del producto (ENTER para cancelar): ")
         if producto is None:
@@ -390,6 +222,7 @@ class AplicacionCarrito:
         self.pausar()
 
     def opcion_ver_carrito(self):
+        """Opción 4: muestra el carrito con su total."""
         if self.carrito_vacio():
             return
         ancho = self.imprimir_carrito()
@@ -397,6 +230,7 @@ class AplicacionCarrito:
         self.pausar("Presione ENTER para volver al menú...")
 
     def opcion_modificar(self):
+        """Opción 5: cambia la cantidad de un producto del carrito."""
         if self.carrito_vacio():
             return
         item = self.elegir(self.carrito.items,
@@ -415,6 +249,7 @@ class AplicacionCarrito:
         self.pausar()
 
     def opcion_eliminar(self):
+        """Opción 6: quita un producto del carrito (pide confirmación)."""
         if self.carrito_vacio():
             return
         item = self.elegir(self.carrito.items,
@@ -430,6 +265,7 @@ class AplicacionCarrito:
         self.pausar()
 
     def opcion_vaciar(self):
+        """Opción 7: quita todos los productos (pide confirmación)."""
         if self.carrito_vacio():
             return
         if self.confirmar("¿Está seguro que desea vaciar el carrito?"):
@@ -440,6 +276,7 @@ class AplicacionCarrito:
         self.pausar()
 
     def opcion_finalizar(self):
+        """Opción 8: muestra el resumen de la compra y vacía el carrito."""
         if self.carrito_vacio():
             return
         self.imprimir_carrito("RESUMEN DE COMPRA", con_precio=False)
@@ -453,6 +290,7 @@ class AplicacionCarrito:
 
     # ----- ciclo principal -----
     def ejecutar(self):
+        """Repite el menú hasta que el usuario elige 9 (Salir)."""
         acciones = {
             "1": self.opcion_mostrar_catalogo,
             "2": self.opcion_buscar,
@@ -487,6 +325,7 @@ class AplicacionCarrito:
 
 
 def main():
+    """Inicia la versión de consola."""
     # Evita que un carácter no soportado por la consola detenga el programa.
     for flujo in (sys.stdout, sys.stderr):
         try:

@@ -1,0 +1,25 @@
+===== PROBLEMA 1: CENSO (1890) =====
+Personas registradas: 5000
+
+--- Ordenar por edad ---
+Inserción: 25 ms
+Quicksort: 4 ms
+Persona más joven: 4908 - Persona 4908 (0)
+Persona más grande: 3101 - Persona 3101 (90)
+
+--- Buscar una persona por folio ---
+Búsqueda tarjeta por tarjeta: 4321 pasos
+Búsqueda con tabla hash: 1 paso(s) -> 4321 - Persona 4321 (75)
+
+===== PROBLEMA 2: TIENDA EN LÍNEA =====
+Productos en el catálogo: 20000
+
+--- Ordenar por precio (de menor a mayor) ---
+Burbuja:   1181 ms
+Quicksort: 8 ms
+Más barato: 120510 - Producto 2931 (53)
+Más caro:   228989 - Producto 18428 (20000)
+
+--- Buscar un producto por código ---
+Búsqueda uno por uno: 20000 pasos
+Búsqueda con tabla hash: 1 paso(s) -> 239993 - Producto 20000 (19209)

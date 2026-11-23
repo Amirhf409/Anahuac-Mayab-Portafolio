@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Arbol Binario de Busqueda (ABB) que simula el sistema de archivos.
  * La raiz SIEMPRE es un Directorio y no se puede borrar.
@@ -78,30 +80,177 @@ public class ArbolSistemaArchivos {
     // ================= ELIMINAR =================
 
     // borra un elemento usando las 3 situaciones del ABB
-    // TODO: situacion 1 (hoja), situacion 2 (un hijo) y situacion 3 (dos hijos, sucesor inorden)
-    // TODO: no dejar borrar la raiz
+    // regresa un mensaje que dice que se borro y que situacion se aplico
     public String eliminar(String nombre) {
-        return "Opcion en desarrollo.";
+        if (raiz.compararCon(nombre) == 0) {
+            return "ERROR: No se puede eliminar el directorio raiz.";
+        }
+
+        // buscamos el nodo a borrar y guardamos quien es su padre
+        ElementoSistema padre = null;
+        ElementoSistema actual = raiz;
+        while (actual != null && actual.compararCon(nombre) != 0) {
+            padre = actual;
+            if (actual.compararCon(nombre) > 0) {
+                actual = actual.getIzquierdo();
+            } else {
+                actual = actual.getDerecho();
+            }
+        }
+        if (actual == null) {
+            return "El elemento no existe en el sistema de archivos.";
+        }
+
+        ElementoSistema reemplazo;
+        String situacion;
+
+        if (actual.esHoja()) {
+            // situacion 1: no tiene hijos, solo se quita
+            reemplazo = null;
+            situacion = "situacion 1: nodo hoja";
+        } else if (actual.getIzquierdo() == null || actual.getDerecho() == null) {
+            // situacion 2: su unico hijo sube a su lugar
+            if (actual.getIzquierdo() != null) {
+                reemplazo = actual.getIzquierdo();
+            } else {
+                reemplazo = actual.getDerecho();
+            }
+            situacion = "situacion 2: nodo con un hijo";
+        } else {
+            // situacion 3: lo reemplaza el sucesor inorden (o el predecesor)
+            reemplazo = tomarSucesor(actual);
+            if (reemplazo == null) {
+                reemplazo = tomarPredecesor(actual);
+            }
+            if (reemplazo == null) {
+                return "ERROR: No se puede eliminar '" + actual.getNombre() + "'.\n"
+                     + "El elemento que tomaria su lugar es un archivo y un archivo no puede tener elementos debajo.";
+            }
+            situacion = "situacion 3: nodo con dos hijos, lo reemplazo '" + reemplazo.getNombre() + "'";
+        }
+
+        // el padre ahora apunta al reemplazo en lugar del nodo borrado
+        if (padre.getIzquierdo() == actual) {
+            padre.setIzquierdo(reemplazo);
+        } else {
+            padre.setDerecho(reemplazo);
+        }
+        cantidad--;
+        return "'" + actual.getNombre() + "' eliminado (" + situacion + ").";
+    }
+
+    // sucesor inorden: el menor del lado derecho
+    // solo se usa si es directorio, porque va a quedar con dos hijos
+    private ElementoSistema tomarSucesor(ElementoSistema nodo) {
+        ElementoSistema padreSucesor = nodo;
+        ElementoSistema sucesor = nodo.getDerecho();
+        while (sucesor.getIzquierdo() != null) {
+            padreSucesor = sucesor;
+            sucesor = sucesor.getIzquierdo();
+        }
+        if (!sucesor.puedeTenerHijos()) {
+            return null;
+        }
+        // lo sacamos de donde estaba y le pasamos los hijos del nodo borrado
+        if (padreSucesor != nodo) {
+            padreSucesor.setIzquierdo(sucesor.getDerecho());
+            sucesor.setDerecho(nodo.getDerecho());
+        }
+        sucesor.setIzquierdo(nodo.getIzquierdo());
+        return sucesor;
+    }
+
+    // predecesor inorden: el mayor del lado izquierdo (se usa si el sucesor es archivo)
+    private ElementoSistema tomarPredecesor(ElementoSistema nodo) {
+        ElementoSistema padrePredecesor = nodo;
+        ElementoSistema predecesor = nodo.getIzquierdo();
+        while (predecesor.getDerecho() != null) {
+            padrePredecesor = predecesor;
+            predecesor = predecesor.getDerecho();
+        }
+        if (!predecesor.puedeTenerHijos()) {
+            return null;
+        }
+        if (padrePredecesor != nodo) {
+            padrePredecesor.setDerecho(predecesor.getIzquierdo());
+            predecesor.setIzquierdo(nodo.getIzquierdo());
+        }
+        predecesor.setDerecho(nodo.getDerecho());
+        return predecesor;
     }
 
     // ================= RECORRIDOS =================
+    // cada recorrido regresa una lista con los elementos en el orden en que se visitaron
 
-    // inorden: izquierda -> raiz -> derecha
-    // TODO: falta hacerlo recursivo e imprimir nombre, extension, tamano y tipo
-    public void inorden() {
-        System.out.println("Opcion en desarrollo.");
+    // inorden: izquierda -> raiz -> derecha (sale en orden alfabetico)
+    public ArrayList<ElementoSistema> inorden() {
+        ArrayList<ElementoSistema> lista = new ArrayList<>();
+        inorden(raiz, lista);
+        return lista;
+    }
+
+    private void inorden(ElementoSistema nodo, ArrayList<ElementoSistema> lista) {
+        if (nodo != null) {
+            inorden(nodo.getIzquierdo(), lista);
+            lista.add(nodo);
+            inorden(nodo.getDerecho(), lista);
+        }
     }
 
     // preorden: raiz -> izquierda -> derecha
-    // TODO
-    public void preorden() {
-        System.out.println("Opcion en desarrollo.");
+    public ArrayList<ElementoSistema> preorden() {
+        ArrayList<ElementoSistema> lista = new ArrayList<>();
+        preorden(raiz, lista);
+        return lista;
+    }
+
+    private void preorden(ElementoSistema nodo, ArrayList<ElementoSistema> lista) {
+        if (nodo != null) {
+            lista.add(nodo);
+            preorden(nodo.getIzquierdo(), lista);
+            preorden(nodo.getDerecho(), lista);
+        }
     }
 
     // postorden: izquierda -> derecha -> raiz
-    // TODO
-    public void postorden() {
-        System.out.println("Opcion en desarrollo.");
+    public ArrayList<ElementoSistema> postorden() {
+        ArrayList<ElementoSistema> lista = new ArrayList<>();
+        postorden(raiz, lista);
+        return lista;
+    }
+
+    private void postorden(ElementoSistema nodo, ArrayList<ElementoSistema> lista) {
+        if (nodo != null) {
+            postorden(nodo.getIzquierdo(), lista);
+            postorden(nodo.getDerecho(), lista);
+            lista.add(nodo);
+        }
+    }
+
+    // ================= INFORMACION =================
+
+    // datos del elemento, sus hijos y si es hoja
+    public String informacionDe(String nombre) {
+        ElementoSistema elemento = buscar(nombre);
+        if (elemento == null) {
+            return "El elemento no existe en el sistema de archivos.";
+        }
+        String texto = elemento.informacion();
+        texto = texto + "\nHijo izquierdo: " + nombreDe(elemento.getIzquierdo());
+        texto = texto + "\nHijo derecho: " + nombreDe(elemento.getDerecho());
+        if (elemento.esHoja()) {
+            texto = texto + "\nEs hoja: Si";
+        } else {
+            texto = texto + "\nEs hoja: No";
+        }
+        return texto;
+    }
+
+    private String nombreDe(ElementoSistema nodo) {
+        if (nodo == null) {
+            return "ninguno";
+        }
+        return nodo.getNombre();
     }
 
     // ================= OTROS =================

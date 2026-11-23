@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Menu interactivo en consola.
+ * Menu interactivo en consola (version de consola del proyecto).
  * Se encarga de pedirle los datos al usuario, validarlos
  * y mandarlos al arbol (ArbolSistemaArchivos).
  */
@@ -30,11 +31,11 @@ public class Menu {
                 case 1: crearDirectorio(); break;
                 case 2: insertarArchivo(); break;
                 case 3: buscarElemento(); break;
-                case 4: System.out.println(arbol.eliminar("")); break;   // TODO: pedir el nombre
-                case 5: arbol.inorden(); break;
-                case 6: arbol.preorden(); break;
-                case 7: arbol.postorden(); break;
-                case 8: System.out.println("Opcion en desarrollo."); break;  // TODO: mostrar informacion
+                case 4: eliminarElemento(); break;
+                case 5: mostrarRecorrido("INORDEN", arbol.inorden()); break;
+                case 6: mostrarRecorrido("PREORDEN", arbol.preorden()); break;
+                case 7: mostrarRecorrido("POSTORDEN", arbol.postorden()); break;
+                case 8: mostrarInformacion(); break;
                 case 0: System.out.println("Gracias por usar el Sistema de Archivos ABB. Hasta pronto!"); break;
                 default: System.out.println("Opcion no valida, intente de nuevo.");
             }
@@ -116,19 +117,49 @@ public class Menu {
             System.out.println("El elemento no existe en el sistema de archivos.");
         } else {
             System.out.println("Elemento encontrado");
-            encontrado.mostrarInformacion();
+            System.out.println(encontrado.informacion());
         }
+    }
+
+    // ---------- opcion 4 ----------
+    private void eliminarElemento() {
+        System.out.println("=== ELIMINAR ELEMENTO ===");
+        String nombre = leerTexto("Nombre a eliminar: ").trim();
+        ElementoSistema elemento = arbol.buscar(nombre);
+
+        // si es un directorio con elementos debajo, primero pedimos confirmacion
+        if (elemento != null && elemento.puedeTenerHijos() && !elemento.esHoja()
+                && elemento != arbol.getRaiz()) {
+            String respuesta = leerTexto("El directorio tiene elementos debajo. Desea eliminarlo? (S/N): ");
+            if (!respuesta.trim().equalsIgnoreCase("S")) {
+                System.out.println("Operacion cancelada.");
+                return;
+            }
+        }
+        System.out.println(arbol.eliminar(nombre));
+    }
+
+    // ---------- opciones 5, 6 y 7 ----------
+    private void mostrarRecorrido(String titulo, ArrayList<ElementoSistema> lista) {
+        System.out.println("=== RECORRIDO " + titulo + " ===");
+        System.out.println(String.format("%-15s %-6s %-10s %-10s", "Nombre", "Ext.", "Tamano", "Tipo"));
+        for (ElementoSistema elemento : lista) {
+            System.out.println(elemento.filaTabla());
+        }
+    }
+
+    // ---------- opcion 8 ----------
+    private void mostrarInformacion() {
+        System.out.println("=== INFORMACION DE UN ELEMENTO ===");
+        String nombre = leerTexto("Nombre: ").trim();
+        System.out.println(arbol.informacionDe(nombre));
     }
 
     // ---------- metodos de apoyo ----------
 
-    // un directorio no puede tener nombre vacio ni extension (ej. "Fotos.jpg" no es valido)
+    // revisa el nombre del directorio con el Validador y muestra el error si hay
     private boolean nombreDirectorioValido(String nombre) {
-        String error = Validador.validarNombre(nombre);
-        if (error == null && nombre.contains(".")) {
-            String extension = nombre.substring(nombre.lastIndexOf('.') + 1);
-            error = Validador.validarExtensionDirectorio(extension);
-        }
+        String error = Validador.validarNombreDirectorio(nombre);
         if (error != null) {
             System.out.println(error);
             return false;

@@ -13,6 +13,16 @@ public class Validador {
         return null;
     }
 
+    // un directorio no puede tener nombre vacio ni extension (ej. "Fotos.jpg" no es valido)
+    public static String validarNombreDirectorio(String nombre) {
+        String error = validarNombre(nombre);
+        if (error == null && nombre.contains(".")) {
+            String extension = nombre.substring(nombre.lastIndexOf('.') + 1);
+            error = validarExtensionDirectorio(extension);
+        }
+        return error;
+    }
+
     // un archivo SI debe tener extension
     public static String validarExtensionArchivo(String extension) {
         if (extension == null || extension.trim().isEmpty()) {

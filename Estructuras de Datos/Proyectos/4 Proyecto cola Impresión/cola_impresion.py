@@ -18,80 +18,25 @@ class ColaImpresion:
 
     def agregar_trabajo(self):
         # Agrega al final de la cola un trabajo enviado por una PC aleatoria.
+        # Regresa la PC que mandó el trabajo, o None si la cola está llena.
         if self.esta_llena():
-            print("\nLa cola de impresión está LLENA")
+            return None
 
-        else:
-            computadora = random.choice(
-                ["PC1", "PC2", "PC3", "PC4", "PC5"]
-            )
-
-            self.cola.append(computadora)
-
-            print(f"\nTrabajo agregado desde {computadora}")
-
-            self.mostrar_cola()
+        computadora = random.choice(["PC1", "PC2", "PC3", "PC4", "PC5"])
+        self.cola.append(computadora)
+        return computadora
 
     def imprimir_documento(self):
-        # Elimina el primer trabajo de la cola respetando el principio FIFO.
+        # Quita el primer trabajo de la cola respetando el principio FIFO.
+        # Regresa la PC que se atendió, o None si la cola está vacía.
         if self.esta_vacia():
-            print("\nLa cola de impresión está VACÍA")
+            return None
 
-        else:
-            computadora = self.cola.pop(0)
-
-            print(f"\nImprimiendo documento de {computadora}")
-            print(f"{computadora} está siendo atendida")
-
-            self.mostrar_cola()
+        return self.cola.pop(0)
 
     def mostrar_cola(self):
-        # Muestra los trabajos pendientes en el orden en que serán atendidos.
-        if self.esta_vacia():
-            print("\nLa cola de impresión está VACÍA")
-
-        else:
-            print("\nCola de impresión:")
-
-            for posicion in range(len(self.cola)):
-                print(f"{posicion + 1}. {self.cola[posicion]}")
-
-
-def mostrar_menu():
-    # Muestra las opciones disponibles para el usuario.
-    print("\n----- COLA DE IMPRESIÓN -----")
-    print("1. Agregar trabajo de impresión")
-    print("2. Imprimir documento")
-    print("3. Mostrar cola de impresión")
-    print("4. Salir")
-
-
-def main():
-    # Crea una cola con capacidad máxima de 6 trabajos.
-    impresora = ColaImpresion(6)
-
-    opcion = ""
-
-    while opcion != "4":
-
-        mostrar_menu()
-
-        opcion = input("\nSelecciona una opción: ")
-
-        if opcion == "1":
-            impresora.agregar_trabajo()
-
-        elif opcion == "2":
-            impresora.imprimir_documento()
-
-        elif opcion == "3":
-            impresora.mostrar_cola()
-
-        elif opcion == "4":
-            print("\nPrograma finalizado.")
-
-        else:
-            print("\nOpción no válida.")
-
-
-main()
+        # Regresa los trabajos pendientes en el orden en que serán atendidos.
+        lista = []
+        for posicion in range(len(self.cola)):
+            lista.append(str(posicion + 1) + ". " + self.cola[posicion])
+        return lista

@@ -42,12 +42,12 @@ public abstract class ElementoSistema {
         return nombre.compareToIgnoreCase(otroNombre);
     }
 
-    // imprime la informacion completa del elemento (para buscar y mostrar info)
-    public void mostrarInformacion() {
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Extension: " + getExtension());
-        System.out.println("Tipo: " + getTipo());
-        System.out.println("Tamano: " + getTamano() + " bytes");
+    // regresa la informacion completa del elemento (para buscar y mostrar info)
+    public String informacion() {
+        return "Nombre: " + nombre
+             + "\nExtension: " + getExtension()
+             + "\nTipo: " + getTipo()
+             + "\nTamano: " + getTamano() + " bytes";
     }
 
     // regresa una linea tipo tabla, se usa en los recorridos
